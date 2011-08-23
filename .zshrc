@@ -154,5 +154,5 @@ esac
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 
-export PATH=${PATH}:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:
+export PATH=${PATH}:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:
 export MANPATH=/opt/local/man:$MANPATH

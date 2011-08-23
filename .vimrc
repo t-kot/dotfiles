@@ -39,7 +39,7 @@ autocmd FileType python set ts=4 sts=4 sw=4 noet noci si ai cinwords=if,elif,els
 if has('mac')
     set langmenu=japanese
 
-    if exists($LANG') && $LANG ==# 'ja_JP.UTF-8'
+    if exists($LANG) && $LANG == 'ja_JP.UTF-8'
         set langmenu=ja_ja.utf-8.macvim
         set encoding=utf-8
         set ambiwidth=double
@@ -62,7 +62,6 @@ set rtp+=~/dotfiles/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
-Bundle 'hallettj/jslint.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Shougo/unite.vim'
@@ -115,6 +114,10 @@ set backupdir=$HOME/vimbackup
 
 "========================== normal mode
 nmap <ESC><ESC> :noh<CR>
+nmap <C-N> :bnext<CR>
+nmap <C-P> :bprevious<CR>
+nnoremap <Space>n 10<C-w><<CR>
+nnoremap <Space>m 10<C-w>><CR>
 
 "========================== visual mode
 
@@ -206,3 +209,36 @@ let Tlist_Ctags_Cmd = "/usr/bin/ctags " "ctagsのパス
 "vimproc setting start
 let g:vimproc_dll_path = $HOME.'/dotfiles/.vim/autoload/proc.so'
 "vimproc setting end
+
+
+"unite.vim setting start
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+"インサート/ノーマルどちらからでも呼び出せるようにキーマップ
+nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-b> :<C-u>Unite buffer file mru<CR>
+inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer file mru<CR>
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+"unite.vim setting end
