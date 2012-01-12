@@ -109,7 +109,19 @@ alias du="du -h"
 alias df="df -h"
 
 alias su="su -l"
-alias vi=/opt/local/bin/vim
+alias e="exit"
+#==== git alias ====
+#alias gco = "git checkout"
+alias gsh="git show"
+alias gst="git status"
+alias gci="git commit"
+alias gdi="git diff"
+alias gbr="git branch"
+alias gad="git add "
+alias gco="git checkout"
+#==================
+
+alias vi="vim"
 
 ## terminal configuration
 #
@@ -151,8 +163,9 @@ esac
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
 # 補完時に大小文字を区別しない
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
-
-export PATH=${PATH}:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:
-export MANPATH=/opt/local/man:$MANPATH
+export NODE_PATH=$HOME/.npm/lib:$PATH
+export PATH=$HOME/.npm/bin:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:$PATH
+export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH

@@ -40,7 +40,7 @@ if has('mac')
     set langmenu=japanese
 
     if exists($LANG) && $LANG == 'ja_JP.UTF-8'
-        set langmenu=ja_ja.utf-8.macvim
+        set langmenu= ja_ja.utf-8.macvim
         set encoding=utf-8
         set ambiwidth=double
     endif
@@ -69,6 +69,8 @@ Bundle 'tpope/vim-rails'
 Bundle 'thinca/vim-ref'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'motemen/git-vim'
 filetype plugin indent on "required!
 " vundle setteing end
 
@@ -80,7 +82,8 @@ set smartcase
 set showtabline=1
 set tabpagemax=15 
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=2
+set smarttab
 set backspace=indent,eol,start
 set wrapscan
 set showmatch
@@ -116,8 +119,11 @@ set backupdir=$HOME/vimbackup
 nmap <ESC><ESC> :noh<CR>
 nmap <C-N> :bnext<CR>
 nmap <C-P> :bprevious<CR>
+nnoremap ; :
+nnoremap : ;
 nnoremap <Space>n 10<C-w><<CR>
 nnoremap <Space>m 10<C-w>><CR>
+nnoremap <Space><SPACE> a<Space><ESC>
 
 "========================== visual mode
 
