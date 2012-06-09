@@ -1,0 +1,143 @@
+" filetype specific
+"----------------------------------------------------------
+filetype plugin indent on
+autocmd FileType python set ts=4 sts=4 sw=4 noet noci si ai cinwords=if,elif,else,for,while,try,except,finally,def,class,with indentkeys+=#
+"color setting end
+
+"language setting start
+if has('mac')
+    set langmenu=japanese
+
+    if exists($LANG) && $LANG == 'ja_JP.UTF-8'
+        set langmenu= ja_ja.utf-8.macvim
+        set encoding=utf-8
+        set ambiwidth=double
+    endif
+endif
+"language setting end
+
+" tab
+"----------------------------------------------------------
+set et ts=2 sw=2 sts=2
+set list listchars=tab:>-,eol:$,trail:*
+
+" edit
+"-----------------------------------------------------------
+filetype plugin on
+" vundle setting start
+set nocompatible
+filetype off
+set rtp+=~/dotfiles/.vim/bundle/vundle/
+call vundle#rc()
+filetype plugin indent on "required!
+
+set autoindent
+set cindent
+set smartindent 
+set ignorecase
+set smartcase
+set showtabline=1
+set tabpagemax=15 
+set tabstop=4
+set shiftwidth=2
+set smarttab
+set backspace=indent,eol,start
+set wrapscan
+set showmatch
+set wildmenu
+set formatoptions+=mM
+set ruler
+set nolist
+set wrap
+set laststatus=2
+set cmdheight=2
+set showcmd
+set title
+set expandtab 
+set incsearch 
+set hlsearch
+set number 
+set whichwrap=b,s,h,l,<,>,[,] 
+set nowrapscan 
+set backup
+set clipboard+=autoselect
+set clipboard=unnamed
+set nocompatible 
+set fileencoding=utf-8
+set backupdir=$HOME/vimbackup 
+set mouse=a
+set guioptions+=a
+set ttymouse=xterm2
+set scrolloff=5
+
+"-------------------------------------------
+" keymap
+"-------------------------------------------
+
+"========================== normal mode
+nmap <ESC><ESC> :noh<CR>
+nmap <C-N> :bnext<CR>
+nmap <C-P> :bprevious<CR>
+nnoremap ; :
+nnoremap : ;
+nnoremap <Space>n 10<C-w><<CR>
+nnoremap <Space>m 10<C-w>><CR>
+nnoremap <Space><SPACE> a<Space><ESC>
+
+"========================== visual mode
+
+
+"========================== insert mode
+
+
+"========================== command  mode
+"taglist
+let Tlist_Ctags_Cmd = "/usr/bin/ctags " "ctagsのパス
+
+"vimproc setting start
+let g:vimproc_dll_path = $HOME.'/dotfiles/.vim/autoload/proc.so'
+"vimproc setting end
+
+
+"unite.vim setting start
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+"インサート/ノーマルどちらからでも呼び出せるようにキーマップ
+nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-b> :<C-u>Unite buffer file mru<CR>
+inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer file mru<CR>
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+endfunction
+"unite.vim setting end
+"
+"
+autocmd BufRead,BufNewFile Gemfile set filetype=Gemfile
+
+
+"TODO
+noremap <Leader>t :noautocmd vimgrep /TODO/j **/*.rb **/*.js **/*.erb **/*.coffee **/*.haml<CR>:cw<CR>

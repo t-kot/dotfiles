@@ -1,0 +1,64 @@
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Shougo/neocomplcache'
+Bundle 'mattn/zencoding-vim'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-cucumber'
+Bundle 'motemen/git-vim'
+Bundle 'kana/vim-fakeclip'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'Source-Explorer-srcexpl.vim'
+Bundle 'taglist.vim'
+"xml/htmlの編集強化
+Bundle 'xmledit'
+"C-aでtrue/false切り替え
+Bundle 'taku-o/vim-toggle'
+"単語移動がスマートに
+Bundle 'smartword'
+"%による対応カッコへの移動強化
+Bundle 'matchit.zip'
+"Grepで対話形式grep
+Bundle 'grep.vim'
+"nerd_tree,taglist,srcexplの統合
+Bundle 'trinity.vim'
+"編集中のファイルを実行
+Bundle 'thinca/vim-quickrun'
+"perldocやphpmanual等のリファレンスをvim上で見る
+Bundle 'thinca/vim-ref'
+
+"Syntax {{{
+"haml
+Bundle 'haml.zip'
+"JavaScript
+Bundle 'JavaScript-syntax'
+"jQuery
+Bundle 'jQuery'
+"nginx conf
+Bundle 'nginx.vim'
+"markdown
+Bundle 'tpope/vim-markdown'
+"Coffee Script
+Bundle 'kchmck/vim-coffee-script'
+"syntax check
+Bundle 'scrooloose/syntastic'
+"}}}
+
+"unite.vim
+Bundle 'Shougo/unite.vim'
+Bundle 'tsukkee/unite-help'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'basyura/unite-rails'
+Bundle 'thinca/vim-unite-history'
+Bundle 'tsukkee/unite-tag'
+Bundle 'choplin/unite-vim_hacks'
+
+"utility
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimproc'
+"git操作
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'TwitVim'
+"Buffer管理
+Bundle 'thinca/vim-openbuf'
+

@@ -121,7 +121,12 @@ alias gad="git add "
 alias gco="git checkout"
 #==================
 
-alias vi="vim"
+alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+alias r="rails"
+alias gcc-4.2="gcc"
+alias tmux="tmux -2"
 
 ## terminal configuration
 #
@@ -167,5 +172,10 @@ esac
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 export NODE_PATH=$HOME/.npm/lib:$PATH
-export PATH=$HOME/.npm/bin:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:$PATH
+export PATH=$HOME/.npm/bin:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
 export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+#Titanium builder
+alias ti='~/Library/Application\ Support/Titanium/mobilesdk/osx/2.0.1.GA2/iphone/builder.py'

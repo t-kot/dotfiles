@@ -1,0 +1,29 @@
+syntax enable
+
+"highlight LineNr ctermfg=darkyellow guifg=darkyellow
+highlight NonText ctermfg=darkgrey gui=NONE guifg=darkcyan
+highlight Folded ctermfg=blue
+highlight SpecialKey cterm=underline ctermfg=darkgrey guifg=darkcyan
+
+highlight Cursor ctermbg=darkyellow guibg=darkyellow
+highlight CursorIM ctermbg=red guibg=red
+
+
+" カレントウィンドウにのみ罫線を引く
+augroup cch
+  autocmd! cch
+  autocmd WinLeave * set nocursorcolumn nocursorline
+  autocmd WinEnter,BufRead * set cursorcolumn cursorline
+  " PHPで重いので使わない
+  autocmd WinEnter,BufRead *.php set nocursorcolumn nocursorline
+augroup END
+
+" 256color settings
+colorscheme colorful256 
+set t_Co=256 
+if &term =~ 'xterm-256color' || $term =~ "xterm-color"
+  highlight Normal ctermbg=none
+else
+  highlight CursorLine cterm=underline ctermbg=darkgrey guibg=black
+  highlight CursorColumn cterm=none ctermbg=darkgrey guibg=black
+endif
