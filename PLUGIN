@@ -3,4 +3,14 @@
 :FriendsTwitter でTLが見られる
 http://d.hatena.ne.jp/ruedap/20110121/vim_twitter_plugin_twitvim
 
-#
+#Quickrun
+\ r でファイルの実行
+:QuickRun -args hogehoge
+でコマンドライン引数を渡せる
+http://takus.me/computer/vim/quickrun-vim/
+
+#trinity
+,tri =>全部乗せ
+,ner => NERD_Tree
+,tag => Tag_list
+,src => SourceExploler

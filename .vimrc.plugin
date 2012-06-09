@@ -1,1 +1,15 @@
-let g:SrcExpl_UpdateTags = 1
+"[Srcexpl] tagsを利用したソースコード閲覧・移動補助
+let g:srcExpl_RefreshTime = 0 "自動でプレビュー表示
+let g:SrcExpl_UpdateTags = 1 "tagsは自動で作成する
+
+"taglist
+let Tlist_Ctags_Cmd = "/usr/local/Cellar/ctags/5.8/bin/ctags" "ctagsのパス
+let Tlist_Show_One_File = 1 "現在編集中のソースのタグしか表示しない
+let Tlist_Exit_OnlyWindow = 1 "taglistのウィンドウが最後のウィンドウなら閉じる
+map <silent> <leader>tl :Tlist<CR>
+
+"trinity
+nnoremap <silent> ,tri :TrinityToggleAll<CR>
+nnoremap <silent> ,ner :TrinityToggleNERDTree<CR>
+nnoremap <silent> ,tag :TrinityToggleTagList<CR>
+nnoremap <silent> ,src :TrinitySourceExplorer<CR>

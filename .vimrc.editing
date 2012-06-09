@@ -1,0 +1,25 @@
+" insertモードを抜けるとIMEオフ
+set noimdisable
+set iminsert=0 imsearch=0
+set noimcmdline
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+" yeでそのカーソル位置にある単語をレジスタに登録
+nmap ye ;let @"=expand("<cword>")<CR>
+"visualモードでのpで選択範囲をレジスタの内容に置き換える
+vnoremap p <Esc>;let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+
+set expandtab "Tabを空白に変換
+
+inoremap , ,<Space> "カンマのあとに自動的にスペース挿入
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+augroup END
+
+" Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
+" Insertmode中で<C-o>でyank内容のput
+inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i

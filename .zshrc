@@ -179,3 +179,4 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #Titanium builder
 alias ti='~/Library/Application\ Support/Titanium/mobilesdk/osx/2.0.1.GA2/iphone/builder.py'
+
