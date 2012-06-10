@@ -14,3 +14,20 @@ http://takus.me/computer/vim/quickrun-vim/
 ,ner => NERD_Tree
 ,tag => Tag_list
 ,src => SourceExploler
+
+#neocomplcache
+<C-y> スニペット
+<C-k> スニペット
+<C-g> undo
+<C-s> 共通部分までを補完する
+<C-k> 行末まで削除
+<C-n> neocomplcache補完
+<C-p> keyword補完
+
+#vimshell
+,shell 上にシェル出す
+,vsc vimshellcreate
+,vshell VimShell
+
+#
+
