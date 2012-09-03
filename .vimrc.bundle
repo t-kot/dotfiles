@@ -34,6 +34,8 @@ Bundle 'digitaltoad/vim-jade'
 "JavaScript
 Bundle 'JavaScript-syntax'
 Bundle 'basyura/jslint.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
 "jQuery
 Bundle 'jQuery'
 "nginx conf
@@ -42,6 +44,8 @@ Bundle 'nginx.vim'
 Bundle 'tpope/vim-markdown'
 "Coffee Script
 Bundle 'kchmck/vim-coffee-script'
+"Jade
+Bundle 'digitaltoad/vim-jade'
 "syntax check
 Bundle 'scrooloose/syntastic'
 "}}}
