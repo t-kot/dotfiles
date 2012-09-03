@@ -6,5 +6,5 @@ source ~/dotfiles/.vimrc.apperance
 source ~/dotfiles/.vimrc.tags
 source ~/dotfiles/.vimrc.search
 source ~/dotfiles/.vimrc.moving
-source ~/dotfiles/.vimrc.plugin
 source ~/dotfiles/.vimrc.bundle
+source ~/dotfiles/.vimrc.plugin

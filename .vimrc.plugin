@@ -18,3 +18,12 @@ nnoremap <silent> ,src :TrinitySourceExplorer<CR>
 nnoremap <silent> ,vshell :VimShell<CR>
 nnoremap <silent> ,vsc :VimShellCreate<CR>
 nnoremap <silent> ,shell :VimShellPop<CR>
+
+"jslint.vim
+
+function! s:javascript_filetype_settings()
+  autocmd BufLeave     <buffer> call jslint#clear()
+  autocmd BufWritePost <buffer> call jslint#check()
+  autocmd CursorMoved  <buffer> call jslint#message()
+endfunction
+autocmd FileType javascript call s:javascript_filetype_settings()

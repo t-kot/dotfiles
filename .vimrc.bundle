@@ -29,8 +29,11 @@ Bundle 'thinca/vim-ref'
 "Syntax {{{
 "haml
 Bundle 'haml.zip'
+"jade
+Bundle 'digitaltoad/vim-jade'
 "JavaScript
 Bundle 'JavaScript-syntax'
+Bundle 'basyura/jslint.vim'
 "jQuery
 Bundle 'jQuery'
 "nginx conf

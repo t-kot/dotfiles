@@ -2,6 +2,10 @@
 "----------------------------------------------------------
 filetype plugin indent on
 autocmd FileType python set ts=4 sts=4 sw=4 noet noci si ai cinwords=if,elif,else,for,while,try,except,finally,def,class,with indentkeys+=#
+autocmd BufNew,BufRead,WinEnter *.coffee setlocal ts=2 sw=2 sts=2 filetype=coffee
+autocmd BufNew,BufRead,WinEnter *.js setlocal ts=4 sw=4 sts=4 filetype=javascript
+autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=ejs
+autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
 
 "language setting start
 if has('mac')
@@ -87,6 +91,7 @@ nnoremap <Space>n 10<C-w><<CR>
 nnoremap <Space>m 10<C-w>><CR>
 nnoremap <Space><SPACE> a<Space><ESC>
 
+
 "========================== visual mode
 
 
@@ -104,8 +109,8 @@ let g:vimproc_dll_path = $HOME.'/dotfiles/.vim/autoload/proc.so'
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 "インサート/ノーマルどちらからでも呼び出せるようにキーマップ
-nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
+inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file file/new<CR>
 nnoremap <silent> <C-b> :<C-u>Unite buffer file mru<CR>
 inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer file mru<CR>
 " バッファ一覧

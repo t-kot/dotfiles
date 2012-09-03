@@ -111,7 +111,6 @@ alias df="df -h"
 alias su="su -l"
 alias e="exit"
 #==== git alias ====
-#alias gco = "git checkout"
 alias gsh="git show"
 alias gst="git status"
 alias gci="git commit"
@@ -119,6 +118,8 @@ alias gdi="git diff"
 alias gbr="git branch"
 alias gad="git add "
 alias gco="git checkout"
+alias glog="git log"
+alias grs="git reset"
 #==================
 
 alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
@@ -127,6 +128,9 @@ alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 alias r="rails"
 alias gcc-4.2="gcc"
 alias tmux="tmux -2"
+alias tlist="tmux list-session"
+alias tkill="tmux kill-session"
+alias tkill!="tmux kill-server"
 
 ## terminal configuration
 #
@@ -156,8 +160,8 @@ kterm*|xterm*)
   precmd() {
     echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
   }
-  export LSCOLORS=exfxcxdxbxegedabagacad
   export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+  export LSCOLORS=gxfxcxdxbxegedabagacad
   zstyle ':completion:*' list-colors \
     'di=33' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
   ;;
@@ -172,11 +176,14 @@ esac
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 export NODE_PATH=$HOME/.npm/lib:$PATH
-export PATH=$HOME/.npm/bin:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
+export PATH=$HOME/.nvm/v0.8.4/bin/:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
 export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #Titanium builder
 alias ti='~/Library/Application\ Support/Titanium/mobilesdk/osx/2.0.1.GA2/iphone/builder.py'
+
+#load nvm
+source ~/.nvm/nvm.sh
 
