@@ -143,9 +143,9 @@ kterm)
 cons25)
   unset LANG
   export LSCOLORS=ExFxCxdxBxegedabagacad
-  export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+  export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;36:cd=43;36:su=41;30:sg=46;30:tw=42;30:ow=43;30'
   zstyle ':completion:*' list-colors \
-    'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+    'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;36' 'cd=43;36'
   ;;
 esac
 
@@ -156,10 +156,9 @@ kterm*|xterm*)
   precmd() {
     echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
   }
-  export LSCOLORS=exfxcxdxbxegedabagacad
-  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+  export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;36:cd=43;36:su=41;30:sg=46;30:tw=42;30:ow=43;30'
   zstyle ':completion:*' list-colors \
-    'di=33' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+    'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;36' 'cd=43;36'
   ;;
 esac
 
@@ -172,11 +171,12 @@ esac
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 export NODE_PATH=$HOME/.npm/lib:$PATH
-export PATH=$HOME/.npm/bin:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
+export PATH=/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
 export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
 #Titanium builder
 alias ti='~/Library/Application\ Support/Titanium/mobilesdk/osx/2.0.1.GA2/iphone/builder.py'
-
+source "$HOME/.nvm/nvm.sh"

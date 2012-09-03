@@ -2,7 +2,9 @@
 "----------------------------------------------------------
 filetype plugin indent on
 autocmd FileType python set ts=4 sts=4 sw=4 noet noci si ai cinwords=if,elif,else,for,while,try,except,finally,def,class,with indentkeys+=#
-
+autocmd BufNew,BufRead,WinEnter *.coffee setlocal ts=2 sw=2 sts=2 filetype=coffee
+autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
+autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=jst
 "language setting start
 if has('mac')
     function Hoge()
@@ -24,7 +26,7 @@ endif
 " tab
 "----------------------------------------------------------
 set et ts=2 sw=2 sts=2
-set list listchars=tab:>-,eol:$,trail:*
+set list listchars=tab:>-,nbsp:%,extends:>,precedes:<,eol:$,trail:*
 
 " edit
 "-----------------------------------------------------------

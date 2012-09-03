@@ -31,6 +31,8 @@ Bundle 'thinca/vim-ref'
 Bundle 'haml.zip'
 "JavaScript
 Bundle 'JavaScript-syntax'
+Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
 "jQuery
 Bundle 'jQuery'
 "nginx conf
@@ -39,6 +41,8 @@ Bundle 'nginx.vim'
 Bundle 'tpope/vim-markdown'
 "Coffee Script
 Bundle 'kchmck/vim-coffee-script'
+"Jade
+Bundle 'digitaltoad/vim-jade'
 "syntax check
 Bundle 'scrooloose/syntastic'
 "}}}
