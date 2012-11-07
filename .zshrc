@@ -120,6 +120,7 @@ alias gad="git add "
 alias gco="git checkout"
 alias glog="git log"
 alias grs="git reset"
+alias gmerge="git merge --no-ff"
 #==================
 
 alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
@@ -176,8 +177,7 @@ esac
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 export NODE_PATH=$HOME/.npm/lib:$PATH
-export PATH=$HOME/.nvm/v0.8.4/bin/:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
-export PATH=/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
+export PATH=/bin:/usr/local/bin/:/$HOME/.nvm/v0.8.4/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
 export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
