@@ -11,7 +11,7 @@ vnoremap p <Esc>;let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 set expandtab "Tabを空白に変換
 
-inoremap , ,<Space> "カンマのあとに自動的にスペース挿入
+inoremap , ,<Space>
 augroup MyXML
   autocmd!
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>

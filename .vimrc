@@ -8,3 +8,4 @@ source ~/dotfiles/.vimrc.search
 source ~/dotfiles/.vimrc.moving
 source ~/dotfiles/.vimrc.bundle
 source ~/dotfiles/.vimrc.plugin
+source ~/dotfiles/.vimrc.editing

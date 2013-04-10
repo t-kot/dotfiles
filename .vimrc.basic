@@ -7,6 +7,7 @@ autocmd BufNew,BufRead,WinEnter *.js setlocal ts=4 sw=4 sts=4 filetype=javascrip
 autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=ejs
 autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
 autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=jst
+autocmd BufNew,BufRead *.scala set filetype=scala
 "language setting start
 if has('mac')
     function Hoge()
@@ -90,6 +91,8 @@ nnoremap : ;
 nnoremap <Space>n 10<C-w><<CR>
 nnoremap <Space>m 10<C-w>><CR>
 nnoremap <Space><SPACE> a<Space><ESC>
+nnoremap j gj
+nnoremap k gk
 
 
 "========================== visual mode
