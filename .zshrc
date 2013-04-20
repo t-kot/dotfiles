@@ -176,8 +176,8 @@ esac
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 export NODE_PATH=$HOME/.npm/lib:$PATH
-export PATH=$HOME/.nvm/v0.8.4/bin/:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
-export PATH=/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
+export PATH=/usr/local/bin/:$HOME/.nvm/v0.8.4/bin/:/android-sdk-mac_x86/platform-tools:/android-sdk-mac_x86/tools:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
+export PATH=/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
 export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
