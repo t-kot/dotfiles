@@ -46,8 +46,12 @@ Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 "Jade
 Bundle 'digitaltoad/vim-jade'
+"JSX
+Bundle 'git://github.com/jsx/jsx.vim.git'
 "syntax check
 Bundle 'scrooloose/syntastic'
+"Scala
+Bundle 'derekwyatt/vim-scala'
 "}}}
 
 "unite.vim

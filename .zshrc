@@ -120,6 +120,7 @@ alias gad="git add "
 alias gco="git checkout"
 alias glog="git log"
 alias grs="git reset"
+alias gmerge="git merge --no-ff"
 #==================
 
 alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
@@ -127,7 +128,7 @@ alias vim="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 alias r="rails"
 alias gcc-4.2="gcc"
-alias tmux="tmux -2"
+#alias tmux="tmux -2"
 alias tlist="tmux list-session"
 alias tkill="tmux kill-session"
 alias tkill!="tmux kill-server"
@@ -172,7 +173,6 @@ esac
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
 # 補完時に大小文字を区別しない
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 export NODE_PATH=$HOME/.npm/lib:$PATH
@@ -180,10 +180,15 @@ export PATH=/usr/local/bin/:$HOME/.nvm/v0.8.4/bin/:/android-sdk-mac_x86/platform
 export PATH=/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
 export MANPATH=$HOME/.npm/man:/opt/local/man:$MANPATH
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
 
 #load nvm
 source ~/.nvm/nvm.sh
 
+export PATH=/bin:/usr/local/bin/:/$HOME/.nvm/v0.8.4/bin/:/$HOME/.nvm/v0.8.4/lib/node_modules/:$PATH
+export PATH="$HOME/.rbenv/bin/:$PATH"
+eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
