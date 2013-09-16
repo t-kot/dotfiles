@@ -35,12 +35,6 @@ set list listchars=tab:>-,nbsp:%,extends:>,precedes:<,eol:$,trail:*
 " edit
 "-----------------------------------------------------------
 filetype plugin on
-" vundle setting start
-set nocompatible
-filetype off
-set rtp+=~/dotfiles/.vim/bundle/vundle/
-call vundle#rc()
-filetype plugin indent on "required!
 
 set autoindent
 set cindent
