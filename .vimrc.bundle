@@ -7,7 +7,8 @@ if has('vim_starting')
 endif
 
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-cucumber'
@@ -16,6 +17,7 @@ NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'taglist.vim'
+NeoBundle 'tpope/vim-endwise'
 "xml/htmlの編集強化
 NeoBundle 'xmledit'
 "C-aでtrue/false切り替え

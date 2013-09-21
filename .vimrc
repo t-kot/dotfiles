@@ -3,6 +3,7 @@ source ~/dotfiles/.vimrc.basic
 source ~/dotfiles/.vimrc.statusline
 source ~/dotfiles/.vimrc.indent
 source ~/dotfiles/.vimrc.apperance
+source ~/dotfiles/.vimrc.completion
 source ~/dotfiles/.vimrc.tags
 source ~/dotfiles/.vimrc.search
 source ~/dotfiles/.vimrc.moving

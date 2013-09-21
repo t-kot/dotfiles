@@ -64,7 +64,7 @@ set nowrapscan
 set backup
 set clipboard+=autoselect
 set clipboard=unnamed
-set nocompatible 
+set nocompatible
 set fileencoding=utf-8
 set backupdir=$HOME/vimbackup 
 set mouse=a

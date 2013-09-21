@@ -1,1 +1,2 @@
-source ~/dotfiles/.vimrc.completion.neocomplcache
+source ~/dotfiles/.vimrc.completion.neocomplete
+source ~/dotfiles/.vimrc.completion.neosnippet

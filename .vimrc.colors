@@ -1,7 +1,5 @@
 syntax enable
 
-
-
 " 256color settings
 colorscheme colorful256 
 set t_Co=256
