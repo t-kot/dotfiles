@@ -175,19 +175,4 @@ esac
 # 補完時に大小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
-export NODE_PATH=$HOME/.npm/lib:$PATH
-export PATH=/usr/local/bin/:/$HOME/bin/:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:$PATH
-export PATH=/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:$PATH
-export MANPATH=/opt/local/man:$MANPATH
-
 export LSCOLORS=gxfxcxdxbxegedabagacad
-
-
-#load nvm
-
-export PATH="$HOME/.rbenv/shims:$PATH"
-eval "$(rbenv init -)"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-export TERM=xterm-256color
