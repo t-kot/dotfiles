@@ -15,6 +15,6 @@ nnoremap <silent> ,tag :TrinityToggleTagList<CR>
 nnoremap <silent> ,src :TrinitySourceExplorer<CR>
 
 "vimshell
-nnoremap <silent> ,vshell :VimShell<CR>
-nnoremap <silent> ,vsc :VimShellCreate<CR>
-nnoremap <silent> ,shell :VimShellPop<CR>
+"nnoremap <silent> ,vshell :VimShell<CR>
+"nnoremap <silent> ,vsc :VimShellCreate<CR>
+nnoremap <silent> ,sh :VimShellPop<CR>

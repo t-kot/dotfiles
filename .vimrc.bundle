@@ -73,8 +73,15 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'choplin/unite-vim_hacks'
 
 "utility
-"NeoBundle 'Shougo/vimshell'
-"NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+      \  'build' : {
+      \    'windows' : 'make -f make_mingw32.mak',
+      \    'cygwin' : 'make -f make_cygwin.mak',
+      \    'mac' : 'make -f make_mac.mak',
+      \    'unix' : 'make -f make_unix.mak',
+      \  },
+      \ }
+NeoBundle 'Shougo/vimshell'
 "git操作
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Lokaltog/vim-powerline'

@@ -98,11 +98,6 @@ nnoremap k gk
 
 "========================== command  mode
 
-"vimproc setting start
-let g:vimproc_dll_path = $HOME.'/dotfiles/.vim/autoload/proc.so'
-"vimproc setting end
-
-
 "unite.vim setting start
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
