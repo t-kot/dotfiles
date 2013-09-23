@@ -32,6 +32,11 @@ zstyle ':completion:*' menu select=1
 setopt list_packed
 setopt nolistbeep
 
+# --prefix=/usr みたいなやつ補完可能に
+setopt magic_equal_subst
+
+bindkey "^I" menu-complete
+
 # 拡張グロブ補完
 # *.text~memo.txt でmemo.txt以外の*.txtにマッチなど
 setopt extended_glob
