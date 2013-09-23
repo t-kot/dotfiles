@@ -28,6 +28,17 @@ setopt share_history # share command history data
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select=1
 
+# 補完を詰める
+setopt list_packed
+setopt nolistbeep
+
+# 拡張グロブ補完
+# *.text~memo.txt でmemo.txt以外の*.txtにマッチなど
+setopt extended_glob
+
+# ドット指定なしで.から始まるファイルをマッチ
+setopt globdots
+
 # Enterでlsとgit statusを表示
 function do_enter() {
   if [ -n "$BUFFER" ]; then
