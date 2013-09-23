@@ -25,3 +25,6 @@ alias gcc-4.2="gcc"
 alias tlist="tmux list-session"
 alias tkill="tmux kill-session"
 alias tkill!="tmux kill-server"
+
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+autoload -U compinit && compinit
