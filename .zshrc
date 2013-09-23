@@ -6,4 +6,4 @@ plugins=(git ruby rails gem brew cap)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-source $HOME/.zshrc.custom
+source $HOME/dotfiles/.zshrc.custom
