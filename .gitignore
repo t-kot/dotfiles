@@ -18,4 +18,7 @@ Session.vim
 *.elc
 
 .zshrc.local
-.vim/bundle/
+/.vim/bundle/
+/.vim/netrwhist
+!/.vim/bundle/neobundle.vim
+!/.vim/bundle/neobundle.vim/**
