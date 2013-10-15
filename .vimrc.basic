@@ -38,11 +38,11 @@ filetype plugin on
 
 set autoindent
 set cindent
-set smartindent 
+set smartindent
 set ignorecase
 set smartcase
 set showtabline=1
-set tabpagemax=15 
+set tabpagemax=15
 set tabstop=4
 set shiftwidth=2
 set smarttab
@@ -57,7 +57,7 @@ set cmdheight=2
 set showcmd
 set title
 set expandtab
-set incsearch 
+set incsearch
 set hlsearch
 set whichwrap=b,s,h,l,<,>,[,] 
 set nowrapscan 

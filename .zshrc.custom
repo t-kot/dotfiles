@@ -63,4 +63,7 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
+export TERM='xterm-256color'
+if [[ -s $HOME/.nvm/nvm.sh ]] ; then source $HOME/.nvm/nvm.sh ; fi
+
 source $HOME/dotfiles/.zshrc.alias
