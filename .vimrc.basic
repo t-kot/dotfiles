@@ -8,6 +8,7 @@ autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=ejs
 autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
 autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=jst
 autocmd BufNew,BufRead,WinEnter *.as setlocal ts=4 sts=4 sw=4 filetype=actionscript
+autocmd BufNew,BufRead,WinEnter *.slim setlocal ts=4 sts=4 sw=4 filetype=slim
 autocmd BufNew,BufRead *.scala set filetype=scala
 "language setting start
 if has('mac')

@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/local/heroku/bin:/Users/kotohata/.rbenv/shims:/Users/kotohata/.rbenv/shims:/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/usr/local/bin/://Users/kotohata/bin/:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/heroku/bin:/Users/kotohata/.rbenv/bin/:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/://Users/kotohata/bin/
+export PATH=$PATH:/usr/local/heroku/bin:/Users/kotohata/.rbenv/shims:/Users/kotohata/.rbenv/shims:/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/usr/local/bin/:/Users/kotohata/bin/:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/heroku/bin:/Users/kotohata/.rbenv/bin/:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/Users/kotohata/bin/
 eval "$(rbenv init -)"
 
 # no beep sound when complete list displayed
@@ -67,3 +67,15 @@ export TERM='xterm-256color'
 if [[ -s $HOME/.nvm/nvm.sh ]] ; then source $HOME/.nvm/nvm.sh ; fi
 
 source $HOME/dotfiles/.zshrc.alias
+
+
+function alc() {
+  if [ $# != 0 ]; then
+    w3m "http://eow.alc.co.jp/$*/UTF-8/?ref=sa"
+  else
+    echo 'usage: alc word'
+  fi
+}
+
+export PGDATA=/usr/local/var/postgres
+export LANG='ja_JP.UTF-8'

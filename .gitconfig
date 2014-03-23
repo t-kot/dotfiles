@@ -3,3 +3,5 @@
 	email = t.kotohata@gmail.com
 [color]
 	ui = true
+[core]
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim

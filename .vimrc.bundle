@@ -18,6 +18,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'taglist.vim'
 NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-surround'
 "xml/htmlの編集強化
 NeoBundle 'xmledit'
 "C-aでtrue/false切り替え
@@ -62,6 +63,9 @@ NeoBundle 'scrooloose/syntastic'
 "Scala
 NeoBundle 'derekwyatt/vim-scala'
 "}}}
+
+"Slim
+NeoBundle 'slim-template/vim-slim'
 
 "unite.vim
 NeoBundle 'Shougo/unite.vim'
