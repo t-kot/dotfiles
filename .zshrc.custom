@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/local/heroku/bin:/Users/kotohata/.rbenv/shims:/Users/kotohata/.rbenv/shims:/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/usr/local/bin/:/Users/kotohata/bin/:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/heroku/bin:/Users/kotohata/.rbenv/bin/:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/Users/kotohata/bin/
+export PATH=$PATH:/usr/local/heroku/bin:/Users/kotohata/.rbenv/shims:/Users/kotohata/.rbenv/shims:/usr/local/bin:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/usr/local/bin/:/Users/kotohata/bin/:/bin:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/heroku/bin:/Users/kotohata/.rbenv/bin/:/opt/local/bin:/opt/local/sbin/:/usr/local/git/bin/:/usr/bin/:/usr/local/bin/:/Users/kotohata/bin/:/usr/local/go/bin
 eval "$(rbenv init -)"
 
 # no beep sound when complete list displayed
@@ -79,3 +79,10 @@ function alc() {
 
 export PGDATA=/usr/local/var/postgres
 export LANG='ja_JP.UTF-8'
+export PATH="/usr/local/sahred/npm/bin:$PATH"
+source $(brew --prefix nvm)/nvm.sh
+export GOPATH=$HOME/go
+export PATH=$HOME/go_appengine:$PATH
+alias goapp=~/google-cloud-sdk/platform/google_appengine/goapp
+source '/Users/kotohata/google-cloud-sdk/path.zsh.inc'
+source '/Users/kotohata/google-cloud-sdk/completion.zsh.inc'

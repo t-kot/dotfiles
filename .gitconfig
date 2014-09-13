@@ -5,3 +5,7 @@
 	ui = true
 [core]
 	editor = /Applications/MacVim.app/Contents/MacOS/Vim
+
+[merge "mergepbx"]
+  name = XCode project files merge
+  driver = mergepbx %O %A %B

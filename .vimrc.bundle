@@ -6,19 +6,15 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'motemen/git-vim'
 NeoBundle 'kana/vim-fakeclip'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'taglist.vim'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-surround'
+"NeoBundle 'tpope/vim-surround'
 "xml/htmlの編集強化
 NeoBundle 'xmledit'
 "C-aでtrue/false切り替え
@@ -27,14 +23,8 @@ NeoBundle 'taku-o/vim-toggle'
 NeoBundle 'smartword'
 "%による対応カッコへの移動強化
 NeoBundle 'matchit.zip'
-"Grepで対話形式grep
-NeoBundle 'grep.vim'
-"nerd_tree,taglist,srcexplの統合
-NeoBundle 'trinity.vim'
 "編集中のファイルを実行
 NeoBundle 'thinca/vim-quickrun'
-"perldocやphpmanual等のリファレンスをvim上で見る
-NeoBundle 'thinca/vim-ref'
 
 "Syntax {{{
 "haml
@@ -58,10 +48,10 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'digitaltoad/vim-jade'
 "JSX
 NeoBundle 'git://github.com/jsx/jsx.vim.git'
+"Go
+NeoBundle 'fatih/vim-go'
 "syntax check
 NeoBundle 'scrooloose/syntastic'
-"Scala
-NeoBundle 'derekwyatt/vim-scala'
 "}}}
 
 "Slim

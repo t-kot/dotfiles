@@ -7,6 +7,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source $HOME/dotfiles/.zshrc.custom
+GOHOME=$HOME/go
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
