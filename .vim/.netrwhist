@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/kotohata/dotfiles/.git'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/kotohata/Projects/bacchus/app'
+let g:netrw_dirhist_2='/Users/kotohata/Projects/bacchus/app/assets/stylesheets/front/detail_sheets/design'
+let g:netrw_dirhist_3='/Users/kotohata/Projects/bacchus/db/migrate'
+let g:netrw_dirhist_4='/Users/kotohata/Projects/koshibukuro/lib/koshibukuro/searcher'
+let g:netrw_dirhist_5='/Users/kotohata/Projects/mitsumo/lib'
+let g:netrw_dirhist_6='/Users/kotohata/Projects/mitsumo/app/assets/javascripts/admin/articles'

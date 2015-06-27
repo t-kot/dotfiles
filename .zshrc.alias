@@ -1,6 +1,4 @@
-#==== vim alias ===
-alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
-alias vim="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+
 
 #==== git alias ====
 alias gsh="git show"
@@ -16,8 +14,6 @@ alias gmerge="git merge --no-ff"
 #==================
 
 alias be="bundle exec"
-alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
-alias vim="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 alias r="rails"
 alias gcc-4.2="gcc"
@@ -30,3 +26,6 @@ alias quicklook="qlmanage -p $args"
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 autoload -U compinit && compinit
+
+alias connect_miraie='gcloud compute --project "automatic-map-832" ssh --zone "asia-east1-a" "rubystackbox-3831"'
+alias connect_bacchus='gcloud compute --project "pelagic-garage-95604" ssh --zone "asia-east1-a" "rubystackbox-9555"'
