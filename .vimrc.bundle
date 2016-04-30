@@ -15,6 +15,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'Source-Explorer-srcexpl.vim'
 NeoBundle 'taglist.vim'
 NeoBundle 'tpope/vim-endwise'
+NeoBundle 'scrooloose/nerdtree'
 "NeoBundle 'tpope/vim-surround'
 "xml/htmlの編集強化
 NeoBundle 'xmledit'
@@ -59,6 +60,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'slim-template/vim-slim'
 
 "unite.vim
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'h1mesuke/unite-outline'

@@ -18,3 +18,7 @@ nnoremap <silent> ,src :TrinitySourceExplorer<CR>
 "nnoremap <silent> ,vshell :VimShell<CR>
 "nnoremap <silent> ,vsc :VimShellCreate<CR>
 nnoremap <silent> ,sh :VimShellPop<CR>
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nnoremap <C-t> :NERDTreeToggle<CR>
