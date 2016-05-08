@@ -23,3 +23,4 @@ inoremap <C-w> <C-g>u<C-w>
 
 " Insertmode中で<C-o>でyank内容のput
 inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
+set nofoldenable
