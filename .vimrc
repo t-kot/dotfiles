@@ -1,12 +1,9 @@
 source ~/dotfiles/.vimrc.colors
 source ~/dotfiles/.vimrc.basic
-source ~/dotfiles/.vimrc.statusline
-source ~/dotfiles/.vimrc.indent
 source ~/dotfiles/.vimrc.apperance
-source ~/dotfiles/.vimrc.completion
-source ~/dotfiles/.vimrc.tags
-source ~/dotfiles/.vimrc.search
-source ~/dotfiles/.vimrc.moving
 source ~/dotfiles/.vimrc.bundle
-source ~/dotfiles/.vimrc.plugin
 source ~/dotfiles/.vimrc.editing
+source ~/dotfiles/.vimrc.unite
+source ~/dotfiles/.vimrc.syntastic
+source ~/dotfiles/.vimrc.completion.neocomplete
+source ~/dotfiles/.vimrc.completion.neosnippet

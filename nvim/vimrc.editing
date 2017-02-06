@@ -1,8 +1,8 @@
 " insertモードを抜けるとIMEオフ
 set noimdisable
-"set iminsert=0 imsearch=0
+set iminsert=0 imsearch=0
 set noimcmdline
-"inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " yeでそのカーソル位置にある単語をレジスタに登録
 nmap ye ;let @"=expand("<cword>")<CR>

@@ -8,11 +8,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Konfekt/FastFold'
+NeoBundle 'Konfekt/FasfFold'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'pocke/neco-gh-issues'
-NeoBundle 'Shougo/neco-syntax'
+NeoBundle 'Shougo/reco-syntax'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'tpope/vim-rails'

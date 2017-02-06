@@ -20,6 +20,9 @@ Session.vim
 
 .zshrc.local
 /.vim/bundle/
+/.vim/cache/
 /.vim/netrwhist
 !/.vim/bundle/neobundle.vim
 !/.vim/bundle/neobundle.vim/**
+/nvim/dein
+direnv

@@ -1,0 +1,93 @@
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/deoplete.nvim/
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#sources#go#gocode_binary = '~/go/src/github.com/nsf/gocode'
+
+" 大文字が入力されるまで区別を無視
+let g:deoplete#enable_smart_case = 1
+
+" _区切りの補完を有効化
+let g:deoplete#enable_underbar_completion = 1
+let g:deoplete#enable_camel_case_completion = 1
+let g:deoplete#max_list = 20
+
+" シンタックスをキャッシュするときの最小文字長
+let g:deoplete#sources#syntax#min_keyword_length = 3
+" 補完を表示する最小文字数
+let g:deoplete#auto_completion_smart_length = 2
+
+" preview window を閉じない
+let g:deoplete#enable_auto_close_preview = 0
+
+autocmd InsertLeave * silent! pclose!
+
+let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
+
+
+if !exists('g:deoplete#delimiter_patterns')
+  let g:deoplete#delimiter_patterns= {}
+endif
+
+let g:deoplete#delimiter_patterns.ruby = ['::']
+
+if !exists('g:deoplete#same_filetypes')
+  let g:deoplete#same_filetypes = {}
+endif
+let g:deoplete#same_filetypes.ruby = 'eruby'
+
+if !exists('g:deoplete#force_omni_input_patterns')
+  let g:deoplete#force_omni_input_patterns = {}
+endif
+
+let g:deoplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:deoplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?' " Same as JavaScript
+let g:deoplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'         " Same as JavaScript
+
+let g:deoplete#data_directory = $HOME . '/.vim/cache/deoplete'
+
+"call deoplete#custom#source('look', 'min_pattern_length', 1)
+
+"call neobundle#untap()
+
+" Define dictionary.
+let g:deoplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:deoplete#keyword_patterns')
+    let g:deoplete#keyword_patterns = {}
+endif
+let g:deoplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     deoplete#undo_completion()
+inoremap <expr><C-l>     deoplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return pumvisible() ? deoplete#close_popup() : "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  deoplete#close_popup()
+inoremap <expr><C-e>  deoplete#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:deoplete#sources#omni#input_patterns')
+  let g:deoplete#sources#omni#input_patterns = {}
+endif

@@ -1,0 +1,23 @@
+alias ll='ls -l'
+alias la='ls -a'
+alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+alias gsh="git show"
+alias gst="git status"
+alias gci="git commit"
+alias gdi="git diff"
+alias gbr="git branch"
+alias gad="git add "
+alias gco="git checkout"
+alias glog="git log"
+alias grs="git reset"
+alias gmerge="git merge --no-ff"
+alias be="bundle exec"
+alias vi="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim"
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+alias r="rails"
+alias gcc-4.2="gcc"
+alias tlist="tmux list-session"
+alias tkill="tmux kill-session"
+alias tkill!="tmux kill-server"
