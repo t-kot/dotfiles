@@ -24,3 +24,9 @@ inoremap <C-w> <C-g>u<C-w>
 " Insertmode中で<C-o>でyank内容のput
 inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
 set nofoldenable
+
+" PHP設定
+let g:php_baselib       = 1
+let g:php_htmlInStrings = 1
+let g:php_noShortTags   = 1
+let g:php_sql_query     = 1

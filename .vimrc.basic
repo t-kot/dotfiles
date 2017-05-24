@@ -31,9 +31,6 @@ if has('mac')
       function Hoge()
         echo "hoge"
       endfunction
-      set langmenu= ja_ja.utf-8.macvim
-      set encoding=utf-8
-      set ambiwidth=double
     endif
 endif
 "language setting end
@@ -42,6 +39,10 @@ endif
 "----------------------------------------------------------
 set et ts=2 sw=2 sts=2
 set list listchars=tab:>-,nbsp:%,extends:>,precedes:<,eol:$,trail:*
+set ambiwidth=double
+" set langmenu= ja_ja.utf-8
+set encoding=utf-8
+set ambiwidth=double
 
 " edit
 "-----------------------------------------------------------

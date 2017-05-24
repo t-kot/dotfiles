@@ -36,10 +36,10 @@ repo =  'kana/vim-fakeclip'
 repo =  'vim-ruby/vim-ruby'
 
 [[plugins]]
-repo =  'Source-Explorer-srcexpl.vim'
+repo =  'vim-scripts/Source-Explorer-srcexpl.vim'
 
 [[plugins]]
-repo =  'taglist.vim'
+repo =  'vim-scripts/taglist.vim'
 
 [[plugins]]
 repo =  'tpope/vim-endwise'
@@ -54,25 +54,25 @@ repo = 'mattn/emmet-vim'
 repo = 'taku-o/vim-toggle'
 
 [[plugins]]
-repo = 'smartword'
+repo = 'vim-scripts/smartword'
 
 [[plugins]]
-repo = 'matchit.zip'
+repo = 'vim-scripts/matchit.zip'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 
 [[plugins]]
-repo = 'haml.zip'
+repo = 'vim-scripts/haml.zip'
 
 [[plugins]]
 repo = 'digitaltoad/vim-jade'
 
 [[plugins]]
-repo = 'jQuery'
+repo = 'vim-scripts/jQuery'
 
 [[plugins]]
-repo = 'nginx.vim'
+repo = 'vim-scripts/nginx.vim'
 
 [[plugins]]
 repo = 'posva/vim-vue'

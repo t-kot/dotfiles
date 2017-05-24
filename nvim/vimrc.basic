@@ -9,15 +9,15 @@ autocmd FileType python set ts=4 sts=4 sw=4 noet noci si ai cinwords=if,elif,els
 "
 autocmd BufNew,BufRead,WinEnter *.coffee setlocal ts=2 sw=2 sts=2 filetype=coffee
 autocmd BufNew,BufRead,WinEnter *.js setlocal ts=4 sw=4 sts=4 filetype=javascript
-autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=ejs
+autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=html
 autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
-autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=jst
 autocmd BufNew,BufRead,WinEnter *.hbs setlocal ts=4 sw=4 sts=4 filetype=html
 "autocmd BufNew,BufRead,WinEnter *.vue setlocal ts=2 sw=2 sts=2 filetype=vue
 autocmd BufNew,BufRead,WinEnter *.as setlocal ts=4 sts=4 sw=4 filetype=actionscript
 autocmd BufNew,BufRead,WinEnter *.go setlocal ts=4 sts=4 sw=4 filetype=go
 autocmd BufNew,BufRead,WinEnter *.slim setlocal ts=4 sts=4 sw=4 filetype=slim
 autocmd BufNew,BufRead,WinEnter *.html setlocal ts=2 sts=2 sw=2 filetype=html
+autocmd BufNew,BufRead,WinEnter *.njk setlocal ts=2 sts=2 sw=2 filetype=html
 autocmd BufNew,BufRead *.scala set filetype=scala
 autocmd BufRead,BufNewFile Gemfile set filetype=ruby
 
@@ -25,6 +25,7 @@ set langmenu=en
 set encoding=utf-8
 set ambiwidth=double
 syntax on
+let g:python3_host_prog = $PYENV_ROOT .'/shims/python3'
 
 "language setting start
 "if has('mac')
