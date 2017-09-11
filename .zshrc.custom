@@ -84,8 +84,10 @@ export PGDATA=/usr/local/var/postgres
 export LANG='ja_JP.UTF-8'
 #source $(brew --prefix nvm)/nvm.sh
 export GOPATH=$HOME/go
+export GOROOT=$HOME/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8
+export APPENGINE_DEV_APPSERVER=$HOME/lib/google-cloud-sdk/platform/google_appengine/dev_appserver.py
 export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-export PATH=$HOME/lib/go_appengine:$PATH
+export PATH=$HOME/platform/google_appengine/dev_appserver.py:$PATH
 source '/Users/kotohata/lib/google-cloud-sdk/path.zsh.inc'
 source '/Users/kotohata/lib/google-cloud-sdk/completion.zsh.inc'
 
@@ -112,3 +114,10 @@ export GOROOT_BOOTSTRAP=$GOROOT
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+export PATH="$HOME/.ndenv/bin:$HOME/.ndenv/shims:$PATH"
+eval "$(ndenv init -)"
+export GO_ENV='development'
+
+export NVIM_PYTHON_LOG_FILE=$HOME/log/nvim-python.log
+export NVIM_PYTHON_LOG_LEVEL=debug

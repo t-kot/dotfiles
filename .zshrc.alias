@@ -5,11 +5,13 @@ alias gsh="git show"
 alias gst="git status"
 alias gci="git commit"
 alias gdi="git diff"
+alias gdc="git diff --cached"
 alias gbr="git branch"
 alias gad="git add "
 alias gco="git checkout"
 alias glog="git log"
 alias grs="git reset"
+alias ggr="git grep"
 alias gmerge="git merge --no-ff"
 #==================
 
@@ -36,3 +38,5 @@ alias vim='nvim'
 alias cdtmp='~/tmp/'`date +"%Y%m%d"`
 alias mktmponly='mkdir -p ~/tmp/'`date +"%Y%m%d"`
 alias mktmp='mktmponly && cdtmp'
+
+alias drw='docker-compose run web'

@@ -84,9 +84,6 @@ repo = 'othree/html5.vim'
 repo = 'tpope/vim-markdown'
 
 [[plugins]]
-repo = 'kchmck/vim-coffee-script'
-
-[[plugins]]
 repo = 'digitaltoad/vim-jade'
 
 [[plugins]]
@@ -127,9 +124,9 @@ repo =  'tsukkee/unite-tag'
 
 [[plugins]]
 repo =  'tpope/vim-fugitive'
-
-[[plugins]]
-repo =  'Lokaltog/vim-powerline'
+# 
+# [[plugins]]
+# repo =  'Lokaltog/vim-powerline'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -137,3 +134,22 @@ build = 'make'
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+# [[plugins]]
+# repo = 'davidhalter/jedi-vim'
+# on_ft = 'python'
+# 
+# [[plugins]]
+# repo = 'zchee/deoplete-jedi'
+# on_ft = 'python'
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'

@@ -9,6 +9,8 @@ autocmd FileType python set ts=4 sts=4 sw=4 noet noci si ai cinwords=if,elif,els
 "
 autocmd BufNew,BufRead,WinEnter *.coffee setlocal ts=2 sw=2 sts=2 filetype=coffee
 autocmd BufNew,BufRead,WinEnter *.js setlocal ts=4 sw=4 sts=4 filetype=javascript
+autocmd BufNew,BufRead,WinEnter *.py setlocal expandtab ts=4 sw=4 sts=4 filetype=python
+autocmd BufNew,BufRead,WinEnter *.css setlocal ts=2 sw=2 sts=2 filetype=css
 autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=html
 autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
 autocmd BufNew,BufRead,WinEnter *.hbs setlocal ts=4 sw=4 sts=4 filetype=html
@@ -25,7 +27,6 @@ set langmenu=en
 set encoding=utf-8
 set ambiwidth=double
 syntax on
-let g:python3_host_prog = $PYENV_ROOT .'/shims/python3'
 
 "language setting start
 "if has('mac')

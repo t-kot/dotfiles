@@ -1,6 +1,4 @@
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/deoplete.nvim/
 let g:deoplete#enable_at_startup = 1
-
 let g:deoplete#sources#go#gocode_binary = '~/go/src/github.com/nsf/gocode'
 
 " 大文字が入力されるまで区別を無視
@@ -43,7 +41,7 @@ let g:deoplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\
 let g:deoplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?' " Same as JavaScript
 let g:deoplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'         " Same as JavaScript
 
-let g:deoplete#data_directory = $HOME . '/.vim/cache/deoplete'
+" let g:deoplete#data_directory = $HOME . '/.vim/cache/deoplete'
 
 "call deoplete#custom#source('look', 'min_pattern_length', 1)
 
@@ -84,10 +82,12 @@ inoremap <expr><C-e>  deoplete#cancel_popup()
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd Filetype python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:deoplete#sources#omni#input_patterns')
   let g:deoplete#sources#omni#input_patterns = {}
 endif
+
