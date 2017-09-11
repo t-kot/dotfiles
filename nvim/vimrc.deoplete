@@ -1,5 +1,5 @@
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = '~/go/src/github.com/nsf/gocode'
+let g:deoplete#sources#go#gocode_binary = '/Users/kotohata/go/src/github.com/nsf/gocode'
 
 " 大文字が入力されるまで区別を無視
 let g:deoplete#enable_smart_case = 1

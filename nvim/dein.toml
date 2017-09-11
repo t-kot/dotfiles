@@ -141,13 +141,13 @@ repo = 'vim-jp/vital.vim'
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 
-# [[plugins]]
-# repo = 'davidhalter/jedi-vim'
-# on_ft = 'python'
-# 
-# [[plugins]]
-# repo = 'zchee/deoplete-jedi'
-# on_ft = 'python'
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 
