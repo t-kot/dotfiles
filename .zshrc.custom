@@ -1,6 +1,7 @@
 export PATH=$PATH:/usr/local/heroku/bin:$HOME/.rbenv/shims:$HOME/.rbenv/bin
 export PATH=$PATH:/usr/local/bin:/bin:$HOME/bin
 export PATH=$PATH:/usr/bin:/usr/sbin:/usr/local/heroku/bin
+export PATH=$HOME/lib/google-cloud-sdk/platform/google_appengine:$PATH
 
 eval "$(rbenv init -)"
 
@@ -67,27 +68,15 @@ zle -N do_enter
 bindkey '^m' do_enter
 
 export TERM='xterm-256color'
-if [[ -s $HOME/.nvm/nvm.sh ]] ; then source $HOME/.nvm/nvm.sh ; fi
 
 source $HOME/dotfiles/.zshrc.alias
 
-
-function alc() {
-  if [ $# != 0 ]; then
-    w3m "http://eow.alc.co.jp/$*/UTF-8/?ref=sa"
-  else
-    echo 'usage: alc word'
-  fi
-}
-
 export PGDATA=/usr/local/var/postgres
 export LANG='ja_JP.UTF-8'
-#source $(brew --prefix nvm)/nvm.sh
 export GOPATH=$HOME/go
-export GOROOT=$HOME/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8
-export APPENGINE_DEV_APPSERVER=$HOME/lib/google-cloud-sdk/platform/google_appengine/dev_appserver.py
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-export PATH=$HOME/platform/google_appengine/dev_appserver.py:$PATH
+export GOROOT=/usr/local/Cellar/go/1.10/libexec/
+export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/lib/google-cloud-sdk/platform/google_appengine:$PATH
 source '/Users/kotohata/lib/google-cloud-sdk/path.zsh.inc'
 source '/Users/kotohata/lib/google-cloud-sdk/completion.zsh.inc'
 
@@ -95,21 +84,7 @@ export XDG_CONFIG_HOME=~/dotfiles
 export EDITOR=vim
 export KEYTIMEOUT=1
 
-#eval "$(docker-machine env default)"
-
 eval "$(direnv hook zsh)"
-
-#export DATASTORE_DATASET=smoother-1470568264413
-#export DATASTORE_EMULATOR_HOST_PATH=localhost:8432/datastore
-#export DATASTORE_HOST=http://localhost:8432
-#export DATASTORE_EMULATOR_HOST=localhost:8432
-#export DATASTORE_PROJECT_ID=smoother-1470568264413
-#export DATASTORE_USE_PROJECT_ID_AS_APP_ID=true
-#
-#
-export LT_PRODUCTION_APP_SERVER_KEY='~/.ssh/id_rsa'
-export LT_PRODUCTION_BASTION_SERVER_KEY='~/.ssh/id_rsa'
-export GOROOT_BOOTSTRAP=$GOROOT
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -121,3 +96,24 @@ export GO_ENV='development'
 
 export NVIM_PYTHON_LOG_FILE=$HOME/log/nvim-python.log
 export NVIM_PYTHON_LOG_LEVEL=debug
+export CLOUDSDK_PYTHON=$(which python2)
+export COMPOSE_HTTP_TIMEOUT=60000
+
+# tmuxの自動起動
+if [[ ! -n $TMUX && $- == *l* ]]; then
+  # get the IDs
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+    tmux new-session
+  fi
+  create_new_session="Create New Session"
+  ID="$ID\n${create_new_session}:"
+  ID="`echo $ID | $PERCOL | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    tmux new-session
+  elif [[ -n "$ID" ]]; then
+    tmux attach-session -t "$ID"
+  else
+    :  # Start terminal normally
+  fi
+fi

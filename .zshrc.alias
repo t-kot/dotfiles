@@ -32,11 +32,13 @@ autoload -U compinit && compinit
 alias connect_miraie='gcloud compute --project "automatic-map-832" ssh --zone "asia-east1-a" "rubystackbox-3831"'
 alias connect_bacchus='gcloud compute --project "pelagic-garage-95604" ssh --zone "asia-east1-a" "rubystackbox-9555"'
 
-alias vim='nvim'
-
 
 alias cdtmp='~/tmp/'`date +"%Y%m%d"`
 alias mktmponly='mkdir -p ~/tmp/'`date +"%Y%m%d"`
 alias mktmp='mktmponly && cdtmp'
 
-alias drw='docker-compose run web'
+alias vim='nvim'
+
+alias dc='docker-compose'
+alias dcu='docker-compose up'
+alias dcr='docker-compose run'

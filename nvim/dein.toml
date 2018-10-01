@@ -36,6 +36,10 @@ repo =  'kana/vim-fakeclip'
 repo =  'vim-ruby/vim-ruby'
 
 [[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
 repo =  'vim-scripts/Source-Explorer-srcexpl.vim'
 
 [[plugins]]
@@ -90,13 +94,13 @@ repo = 'digitaltoad/vim-jade'
 repo = 'isRuslan/vim-es6'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-
-[[plugins]]
 repo = 'vim-jp/vim-go-extra'
 
 [[plugins]]
 repo = 'scrooloose/syntastic'
+
+# [[plugins]]
+# repo = 'neomake/neomake'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
@@ -153,3 +157,15 @@ repo = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'plytophogy/vim-virtualenv'
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+
+# [[plugins]]
+# repo = 'jsfaint/gen_tags.vim'
+
+[[plugins]]
+repo = 'tomlion/vim-solidity'
