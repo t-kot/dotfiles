@@ -1,0 +1,42 @@
+" Telescope-based picker with same keybinds as before
+
+" Helper: pick files from current buffer's directory
+function! s:TelescopeFilesFromBufferDir()
+  let l:cwd = expand('%:p:h')
+  execute 'Telescope find_files cwd=' . fnameescape(l:cwd)
+endfunction
+
+" Keep original keybinds (<C-f>, <C-b>) in both modes
+nnoremap <silent> <C-f> :<C-u>call <SID>TelescopeFilesFromBufferDir()<CR>
+inoremap <silent> <C-f> <ESC>:<C-u>call <SID>TelescopeFilesFromBufferDir()<CR>
+nnoremap <silent> <C-b> :<C-u>Telescope buffers<CR>
+inoremap <silent> <C-b> <ESC>:<C-u>Telescope buffers<CR>
+
+" Inside Telescope prompt: split/vsplit on <C-j>/<C-l>, close on <ESC><ESC>
+lua << EOF
+local actions = require('telescope.actions')
+require('telescope').setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.select_horizontal,
+        ["<C-l>"] = actions.select_vertical,
+        ["<ESC>"] = actions.close,
+        ["<ESC><ESC>"] = actions.close,
+      },
+      n = {
+        ["<C-j>"] = actions.select_horizontal,
+        ["<C-l>"] = actions.select_vertical,
+        ["<ESC>"] = actions.close,
+        ["<ESC><ESC>"] = actions.close,
+      },
+    },
+    sorting_strategy = 'ascending',
+    layout_config = { prompt_position = 'top' },
+  },
+})
+pcall(function() require('telescope').load_extension('fzf') end)
+EOF
+
+" Keep TODO grep mapping (unchanged)
+noremap <Leader>t :noautocmd vimgrep /TODO/j **/*.rb **/*.js **/*.erb **/*.coffee **/*.haml<CR>:cw<CR>

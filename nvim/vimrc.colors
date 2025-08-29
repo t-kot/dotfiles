@@ -1,4 +1,5 @@
 syntax enable
+set termguicolors
 
 " 256color settings
 colorscheme tender

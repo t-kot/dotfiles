@@ -1,23 +1,5 @@
 filetype plugin indent on
 
-autocmd BufNew,BufRead,WinEnter *.coffee setlocal ts=2 sw=2 sts=2 filetype=coffee
-autocmd BufNew,BufRead,WinEnter *.js setlocal ts=4 sw=4 sts=4 filetype=javascript
-autocmd BufNew,BufRead,WinEnter *.ts setlocal ts=4 sw=4 sts=4 filetype=typescript
-autocmd BufNew,BufRead,WinEnter *.py setlocal ts=4 sw=4 sts=4 filetype=python
-autocmd BufNew,BufRead,WinEnter *.css setlocal ts=2 sw=2 sts=2 filetype=css
-autocmd BufNew,BufRead,WinEnter *.ejs setlocal ts=2 sw=2 sts=2 filetype=html
-autocmd BufNew,BufRead,WinEnter *.jade setlocal ts=2 sw=2 sts=2 filetype=jade
-autocmd BufNew,BufRead,WinEnter *.hbs setlocal ts=4 sw=4 sts=4 filetype=html
-"autocmd BufNew,BufRead,WinEnter *.vue setlocal ts=2 sw=2 sts=2 filetype=vue
-autocmd BufNew,BufRead,WinEnter *.as setlocal ts=4 sts=4 sw=4 filetype=actionscript
-autocmd BufNew,BufRead,WinEnter *.go setlocal ts=4 sts=4 sw=4 filetype=go
-autocmd BufNew,BufRead,WinEnter *.slim setlocal ts=4 sts=4 sw=4 filetype=slim
-autocmd BufNew,BufRead,WinEnter *.html setlocal ts=2 sts=2 sw=2 filetype=html
-autocmd BufNew,BufRead,WinEnter *.njk setlocal ts=2 sts=2 sw=2 filetype=html
-autocmd BufNew,BufRead,WinEnter *.sol setlocal ts=4 sts=4 sw=4 filetype=solidity
-autocmd BufNew,BufRead *.scala set filetype=scala
-autocmd BufRead,BufNewFile Gemfile set filetype=ruby
-
 set langmenu=en
 set encoding=utf-8
 set ambiwidth=double
@@ -27,9 +9,9 @@ syntax on
 filetype plugin on
 
 set autoindent
-set autochdir
-set cindent
-set smartindent
+" Avoid autochdir for speed and better tool compatibility
+" set autochdir
+" Use filetype indent plugins; avoid redundant cindent/smartindent
 set ignorecase
 set smartcase
 set showtabline=1
@@ -44,27 +26,34 @@ set formatoptions+=mM
 set ruler
 set wrap
 set laststatus=2
-set cmdheight=2
+set cmdheight=1
 set showcmd
-set title
+" set notitle " disable if terminal title updates are slow
 set expandtab
 set incsearch
 set hlsearch
-set whichwrap=b,s,h,l,<,>,[,] 
+set whichwrap=b,s,h,l,<,>,[,]
 set nowrapscan 
-set backup
+" Disable backup files to avoid slow I/O on network FS
+set nobackup nowritebackup
+" Keep swap unless you prefer no crash recovery
+" set noswapfile
 "set clipboard+=autoselect
-set clipboard=unnamed
+" Prefer system clipboard if available
+set clipboard=unnamed,unnamedplus
 set nocompatible
 set fileencoding=utf-8
 set mouse=a
 "set ttymouse=xterm2
 set scrolloff=5
 set vb t_vb= "音を鳴らさない
-set foldmethod=syntax
+" Syntax folding is slow on large files; use manual for speed
+set foldmethod=manual
 set foldlevel=100 "Don't autofold anything
 set timeoutlen=1000
 set ttimeoutlen=0
+" Reduce redraws during macros/scrolling
+set lazyredraw
 
 "-------------------------------------------
 " keymap

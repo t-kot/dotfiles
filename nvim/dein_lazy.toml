@@ -1,2 +1,1 @@
-[[plugins]]
-repo = 'vim-ruby/vim-ruby'
+# Intentionally empty for now; add lazy plugins here when needed.

@@ -1,0 +1,5 @@
+### Ignore plugin caches and local state
+nvim/dein/
+/.DS_Store
+*.swp
+*.swo

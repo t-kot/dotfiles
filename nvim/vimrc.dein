@@ -2,12 +2,17 @@ if &compatible
   set nocompatible
 endif
 
-let s:dein_dir = expand('~/dotfiles/nvim/dein')
+" Use standard data dir for dein cache (don’t keep repos in dotfiles)
+if has('nvim')
+  let s:dein_dir = stdpath('data') . '/dein'
+else
+  let s:dein_dir = expand('~/.cache/vim/dein')
+endif
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" なければgit clone
+" Bootstrap dein (once). Avoid network work on every startup.
 if !isdirectory(s:dein_repo_dir)
-  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  silent execute '!git clone https://github.com/Shougo/dein.vim ' . fnameescape(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
@@ -23,6 +28,4 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-if dein#check_install()
-  call dein#install()
-endif
+" To install/update plugins: :call dein#install() / :call dein#update()

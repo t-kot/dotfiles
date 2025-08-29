@@ -4,6 +4,21 @@ repo = 'vim-ruby/vim-ruby'
 [[plugins]]
 repo = 'jacoborus/tender.vim'
 
+# Telescope (modern, fast picker for Neovim)
 [[plugins]]
-repo =  'Shougo/unite.vim'
+repo = 'nvim-lua/plenary.nvim'
 
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+
+# Faster sorter for Telescope (optional native build)
+[[plugins]]
+repo = 'nvim-telescope/telescope-fzf-native.nvim'
+build = 'make'
+
+# Adopt EditorConfig to replace many per-filetype autocmds
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'

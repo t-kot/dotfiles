@@ -1,0 +1,33 @@
+# Extra settings to speed up oh-my-zsh environments.
+# Add the following line near the top of your ~/.zshrc (before `source $ZSH/oh-my-zsh.sh`):
+#   source ~/dotfiles/.zshrc.ohmyzsh-extra
+
+# Ensure Homebrew binaries are on PATH early (helps Obsidian, non-login shells)
+if [[ -d /opt/homebrew/bin ]]; then
+  PATH=/opt/homebrew/bin:$PATH
+elif [[ -d /usr/local/bin ]]; then
+  PATH=/usr/local/bin:$PATH
+fi
+export PATH
+
+# Pin gitstatus cache dir to a known good (exec-capable) location
+export GITSTATUS_CACHE_DIR="$HOME/.cache/gitstatus"
+
+# Workaround: if running inside Obsidian terminal, disable gitstatus to avoid init failures
+if [[ "${TERM_PROGRAM:-}" == obsidian || "${TERM_PROGRAM:-}" == Obsidian ]]; then
+  export POWERLEVEL9K_DISABLE_GITSTATUS=1
+fi
+
+# Speed up VCS prompts on large repos (skip untracked check)
+export DISABLE_UNTRACKED_FILES_DIRTY=true
+
+# Skip compaudit/compfix prompts and speed up completion init
+export ZSH_DISABLE_COMPFIX=true
+
+# Optional: disable auto-update checks for maximum startup speed
+# export DISABLE_AUTO_UPDATE=true
+
+# Optional: faster completion styles
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*' squeeze-slashes true

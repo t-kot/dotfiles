@@ -1,0 +1,20 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_line = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.{js,ts,py,go,as,sol}]
+indent_size = 4
+
+[*.{css,scss,html,ejs,njk,vue,coffee}]
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+
