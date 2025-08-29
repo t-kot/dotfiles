@@ -1,0 +1,9 @@
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+[[plugins]]
+repo =  'Shougo/unite.vim'
+

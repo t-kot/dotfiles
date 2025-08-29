@@ -1,0 +1,41 @@
+alias gsh="git show"
+alias gst="git status"
+alias gci="git commit"
+alias gdi="git diff"
+alias gdc="git diff --cached"
+alias gbr="git branch"
+alias gad="git add "
+alias gco="git checkout"
+alias glog="git log"
+alias grs="git reset"
+alias ggr="git grep"
+alias gmerge="git merge --no-ff"
+#==================
+
+alias be="bundle exec"
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+alias r="rails"
+alias gcc-4.2="gcc"
+#alias tmux="tmux -2"
+alias tlist="tmux list-session"
+alias tkill="tmux kill-session"
+alias tkill!="tmux kill-server"
+
+alias quicklook="qlmanage -p $args"
+
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+autoload -U compinit && compinit
+
+alias connect_miraie='gcloud compute --project "automatic-map-832" ssh --zone "asia-east1-a" "rubystackbox-3831"'
+alias connect_bacchus='gcloud compute --project "pelagic-garage-95604" ssh --zone "asia-east1-a" "rubystackbox-9555"'
+
+
+alias cdtmp='~/tmp/'`date +"%Y%m%d"`
+alias mktmponly='mkdir -p ~/tmp/'`date +"%Y%m%d"`
+alias mktmp='mktmponly && cdtmp'
+
+alias vim='nvim'
+
+alias dc='docker-compose'
+alias dcu='docker-compose up'
+alias dcr='docker-compose run'
