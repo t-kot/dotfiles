@@ -60,7 +60,7 @@ typeset -Ua path
 path=($HOME/bin $path)
 
 # Aliases
-[[ -f $HOME/dotfiles/.zshrc.alias ]] && source $HOME/dotfiles/.zshrc.alias
+[[ -f $HOME/.zshrc.alias ]] && source $HOME/.zshrc.alias
 
 # Version managers: lazy loaders (work regardless of framework)
 export RBENV_ROOT="${RBENV_ROOT:-$HOME/.rbenv}"

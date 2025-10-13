@@ -14,29 +14,28 @@ inoremap <silent> <C-b> <ESC>:<C-u>Telescope buffers<CR>
 
 " Inside Telescope prompt: split/vsplit on <C-j>/<C-l>, close on <ESC><ESC>
 lua << EOF
-local actions = require('telescope.actions')
-require('telescope').setup({
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-j>"] = actions.select_horizontal,
-        ["<C-l>"] = actions.select_vertical,
-        ["<ESC>"] = actions.close,
-        ["<ESC><ESC>"] = actions.close,
+pcall(function()
+  local actions = require('telescope.actions')
+  require('telescope').setup({
+    defaults = {
+      mappings = {
+        i = {
+          ["<C-j>"] = actions.select_horizontal,
+          ["<C-l>"] = actions.select_vertical,
+          ["<ESC>"] = actions.close,
+          ["<ESC><ESC>"] = actions.close,
+        },
+        n = {
+          ["<C-j>"] = actions.select_horizontal,
+          ["<C-l>"] = actions.select_vertical,
+          ["<ESC>"] = actions.close,
+          ["<ESC><ESC>"] = actions.close,
+        },
       },
-      n = {
-        ["<C-j>"] = actions.select_horizontal,
-        ["<C-l>"] = actions.select_vertical,
-        ["<ESC>"] = actions.close,
-        ["<ESC><ESC>"] = actions.close,
-      },
+      sorting_strategy = 'ascending',
+      layout_config = { prompt_position = 'top' },
     },
-    sorting_strategy = 'ascending',
-    layout_config = { prompt_position = 'top' },
-  },
-})
-pcall(function() require('telescope').load_extension('fzf') end)
+  })
+  require('telescope').load_extension('fzf')
+end)
 EOF
-
-" Keep TODO grep mapping (unchanged)
-noremap <Leader>t :noautocmd vimgrep /TODO/j **/*.rb **/*.js **/*.erb **/*.coffee **/*.haml<CR>:cw<CR>

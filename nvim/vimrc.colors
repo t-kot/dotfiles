@@ -2,7 +2,7 @@ syntax enable
 set termguicolors
 
 " 256color settings
-colorscheme tender
+" colorscheme tender
 "set t_Co=256
 if &term =~ 'xterm-256color' || $term =~ "xterm-color"
   highlight Normal ctermbg=none
