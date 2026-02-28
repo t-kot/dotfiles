@@ -3,6 +3,16 @@
 # Return early for non-interactive shells
 [[ $- != *i* ]] && return
 
+# Auto-attach tmux on terminal launch (skip inside tmux, SSH, or embedded terminals)
+if command -v tmux >/dev/null 2>&1 \
+  && [[ -z "$TMUX" ]] \
+  && [[ -z "$SSH_CONNECTION" ]] \
+  && [[ -z "$VSCODE_PID" ]] \
+  && [[ "$TERM_PROGRAM" != "vscode" ]] \
+  && [[ -z "$INSIDE_EMACS" ]]; then
+  tmux attach-session 2>/dev/null || tmux new-session
+fi
+
 # Load performance extras early (PATH/bootstrap, Obsidian workarounds)
 source "$HOME/dotfiles/.zshrc.ohmyzsh-extra" 2>/dev/null || true
 
@@ -50,7 +60,7 @@ else
 fi
 
 # Powerlevel10k (optional). Keep near top for instant prompt to work.
-[[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
+# (sourced once via the block below, near end of file)
 
 # Keybindings
 bindkey -e
@@ -90,3 +100,5 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"

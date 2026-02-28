@@ -4,7 +4,7 @@ set termguicolors
 " 256color settings
 " colorscheme tender
 "set t_Co=256
-if &term =~ 'xterm-256color' || $term =~ "xterm-color"
+if &term =~ 'xterm-256color' || $TERM =~ "xterm-color"
   highlight Normal ctermbg=none
 else
   highlight CursorLine cterm=underline ctermbg=darkgrey guibg=black

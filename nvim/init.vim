@@ -4,7 +4,8 @@ if has('nvim') && exists('$PYENV_ROOT') && isdirectory($PYENV_ROOT . "/versions/
   let g:python3_host_prog = $PYENV_ROOT . '/versions/nvim-python3/bin/python'
 endif
 
-source ~/Repository/dotfiles/nvim/vimrc.dein
-source ~/Repository/dotfiles/nvim/vimrc.colors
-source ~/Repository/dotfiles/nvim/vimrc.basic
-source ~/Repository/dotfiles/nvim/vimrc.telescope
+let s:nvim_dir = expand('<sfile>:p:h')
+execute 'source' s:nvim_dir . '/vimrc.dein'
+execute 'source' s:nvim_dir . '/vimrc.colors'
+execute 'source' s:nvim_dir . '/vimrc.basic'
+execute 'source' s:nvim_dir . '/vimrc.telescope'
