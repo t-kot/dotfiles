@@ -67,7 +67,7 @@ bindkey -e
 
 # PATH helpers (keep minimal; extend as needed)
 typeset -Ua path
-path=($HOME/bin $path)
+path=($HOME/.local/bin $HOME/bin $path)
 
 # Aliases
 [[ -f $HOME/.zshrc.alias ]] && source $HOME/.zshrc.alias
@@ -101,4 +101,15 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
+# Claude Code
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
+
 [[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

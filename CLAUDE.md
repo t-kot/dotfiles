@@ -13,6 +13,7 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.zshrc.alias ~/.zshrc.alias
 ln -s ~/dotfiles/.zshrc.ohmyzsh-extra ~/.zshrc.ohmyzsh-extra
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/.claude-global/settings.json ~/.claude/settings.json
 # Neovim reads nvim/init.vim via absolute path (~/Repository/dotfiles/nvim/)
 ```
 
