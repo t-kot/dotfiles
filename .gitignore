@@ -3,3 +3,7 @@ nvim/dein/
 /.DS_Store
 *.swp
 *.swo
+
+### Local-only artifacts (not tracked)
+*.itermexport
+*.pdf
