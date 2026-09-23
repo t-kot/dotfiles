@@ -8,7 +8,6 @@
 ------------------------------------------------------------------------------
 local o = vim.opt
 o.number = true
-o.ambiwidth = 'double'
 o.ignorecase = true
 o.smartcase = true
 o.expandtab = true
