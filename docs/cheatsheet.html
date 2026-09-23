@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>dotfiles 早見表</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root {
+    --ground: #f4f6f9;
+    --panel: #ffffff;
+    --ink: #1b2230;
+    --muted: #5a6475;
+    --rule: #dde2ea;
+    --accent: #0a5fb4;
+    --accent-soft: #e3eefa;
+    --key-bg: #ffffff;
+    --key-edge: #c3cad6;
+    --code-bg: #eef1f6;
+    --warn: #9a5b00;
+    --warn-soft: #fbf1df;
+    --sans: "IBM Plex Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #1f242d;
+      --panel: #282c34;
+      --ink: #e6e9ef;
+      --muted: #9aa3b2;
+      --rule: #3a404b;
+      --accent: #5fb2ff;
+      --accent-soft: #1d3a5c;
+      --key-bg: #333a45;
+      --key-edge: #4a5261;
+      --code-bg: #323844;
+      --warn: #f0b35a;
+      --warn-soft: #3b3122;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #1f242d;
+    --panel: #282c34;
+    --ink: #e6e9ef;
+    --muted: #9aa3b2;
+    --rule: #3a404b;
+    --accent: #5fb2ff;
+    --accent-soft: #1d3a5c;
+    --key-bg: #333a45;
+    --key-edge: #4a5261;
+    --code-bg: #323844;
+    --warn: #f0b35a;
+    --warn-soft: #3b3122;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 32px 64px;
+  }
+  header.top h1 {
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 6px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  header.top p { margin: 0; color: var(--muted); max-width: 62ch; }
+  .prefix-note {
+    margin-top: 14px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: center;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  nav.jump {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--ground);
+    padding-block: 12px;
+    margin-top: 20px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  nav.jump a {
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: var(--panel);
+  }
+  nav.jump a:hover, nav.jump a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+  .search {
+    margin-left: auto;
+    flex: 1 1 200px;
+    max-width: 280px;
+  }
+  .search input {
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    color: var(--ink);
+  }
+  .search input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  section { margin-top: 40px; scroll-margin-top: 110px; }
+  section > h2 {
+    font-size: 20px;
+    margin: 0 0 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  section > h2 .tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  section > p.lead { margin: 0 0 14px; color: var(--muted); max-width: 70ch; }
+  h3 {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 500;
+    margin: 18px 0 6px;
+  }
+
+  .table-box { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 9px 14px; border-top: 1px solid var(--rule); vertical-align: top; }
+  tr:first-child td { border-top: 0; }
+  td.k { width: 34%; min-width: 170px; white-space: nowrap; }
+  td.d { color: var(--ink); }
+  td.d small { display: block; color: var(--muted); font-size: 13px; }
+
+  kbd {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    display: inline-block;
+    min-width: 1.4em;
+    text-align: center;
+    padding: 1px 6px;
+    border: 1px solid var(--key-edge);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    background: var(--key-bg);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .then { color: var(--muted); font-size: 12px; margin: 0 3px; }
+  code {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: var(--code-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  td.d code { white-space: normal; }
+
+  .tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .tool {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+  .tool b { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+  .tool span { display: block; font-size: 13px; color: var(--muted); }
+
+  .caution {
+    margin-top: 12px;
+    background: var(--warn-soft);
+    border-left: 3px solid var(--warn);
+    padding: 8px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .caution b { color: var(--warn); }
+
+  .status-demo {
+    font-family: var(--mono);
+    font-size: 13px;
+    background: #282c34;
+    color: #e6e9ef;
+    border-radius: 8px;
+    padding: 10px 14px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .status-demo .b { color: #5fb2ff; }
+  .status-demo .g { color: #7ec27e; }
+  .status-demo .m { color: #d98ee0; }
+  .status-demo .y { color: #e5c07b; }
+
+  .empty-hit { display: none; margin-top: 24px; color: var(--muted); }
+  footer { margin-top: 56px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 14px; }
+
+  @media (max-width: 560px) {
+    header.top h1 { font-size: 24px; }
+    td.k { min-width: 140px; white-space: normal; }
+    .search { max-width: none; margin-left: 0; flex-basis: 100%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+</style>
+<style>body { margin: 0; }</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>dotfiles 早見表</h1>
+    <p>2026-09-23 の刷新で入ったツール・キー操作・コマンドのまとめ。設定の実体は <code>~/Repository/dotfiles</code>。</p>
+    <div class="prefix-note">tmux のプレフィックスは <kbd>Ctrl</kbd>+<kbd>s</kbd>（以下「prefix」）</div>
+  </header>
+
+  <nav class="jump" aria-label="セクション">
+    <a href="#new">入ったもの</a>
+    <a href="#shell">シェル</a>
+    <a href="#tmux">tmux</a>
+    <a href="#copy">コピーモード</a>
+    <a href="#nvim">Neovim</a>
+    <a href="#ghostty">Ghostty</a>
+    <a href="#git">Git</a>
+    <a href="#claude">Claude Code</a>
+    <a href="#runtime">言語環境</a>
+    <a href="#maint">メンテナンス</a>
+    <div class="search"><input id="filter" type="search" placeholder="絞り込み（例: コピー, fzf, cw）" aria-label="早見表を絞り込む"></div>
+  </nav>
+
+  <section id="new">
+    <h2>今回入ったツール</h2>
+    <p class="lead">すべて Brewfile で管理しています。新しいマシンでは <code>./install.sh --brew</code> で一式入ります。</p>
+    <div class="tools">
+      <div class="tool"><b>fzf</b><span>あいまい検索。ファイル選択やディレクトリ移動に</span></div>
+      <div class="tool"><b>atuin</b><span>強化版のコマンド履歴検索（<kbd>Ctrl</kbd>+<kbd>r</kbd>）</span></div>
+      <div class="tool"><b>zoxide</b><span>よく行くディレクトリへ <code>z</code> で移動</span></div>
+      <div class="tool"><b>eza</b><span>見やすい ls（<code>ll</code> / <code>la</code> / <code>lt</code>）</span></div>
+      <div class="tool"><b>bat</b><span>色付きの cat。<code>bat ファイル</code></span></div>
+      <div class="tool"><b>delta</b><span>git diff を見やすく（自動で使われる）</span></div>
+      <div class="tool"><b>lazygit</b><span>git の操作画面。<code>lg</code> で起動</span></div>
+      <div class="tool"><b>yazi</b><span>ファイルマネージャ。<code>yazi</code></span></div>
+      <div class="tool"><b>btop</b><span>CPU・メモリなどのリソースモニタ</span></div>
+      <div class="tool"><b>hyperfine</b><span>コマンドの実行時間を計測</span></div>
+      <div class="tool"><b>tealdeer</b><span>コマンドの使用例。<code>tldr コマンド名</code></span></div>
+      <div class="tool"><b>yq</b><span>YAML 版の jq</span></div>
+      <div class="tool"><b>sesh</b><span>tmux のセッション切り替え（<kbd>prefix</kbd> <kbd>t</kbd>）</span></div>
+      <div class="tool"><b>mise</b><span>Node / pnpm のバージョン管理</span></div>
+      <div class="tool"><b>starship</b><span>プロンプト</span></div>
+      <div class="tool"><b>antidote</b><span>zsh のプラグイン管理</span></div>
+      <div class="tool"><b>Ghostty</b><span>ターミナル本体</span></div>
+      <div class="tool"><b>gitleaks</b><span>コミット時に秘密情報を検出</span></div>
+      <div class="tool"><b>macism</b><span>コピーモード中の入力ソース切り替え</span></div>
+    </div>
+  </section>
+
+  <section id="shell">
+    <h2>シェル（zsh）<span class="tag">.zshrc / .zshrc.alias</span></h2>
+    <p class="lead">プロンプトは <code>user@host ~/R/dir branch ❯</code> の形。3秒以上かかったコマンドは所要時間も表示されます。</p>
+    <h3>探す・移動する</h3>
+    <div class="table-box"><table>
+      <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>r</kbd></td><td class="d">履歴を全文検索（atuin）</td></tr>
+      <tr><td class="k"><kbd>↑</kbd> / <kbd>Ctrl</kbd>+<kbd>p</kbd></td><td class="d">入力中の文字を含む履歴をさかのぼる<small><kbd>↓</kbd> / <kbd>Ctrl</kbd>+<kbd>n</kbd> で戻る</small></td></tr>
+      <tr><td class="k"><kbd>→</kbd></td><td class="d">薄く表示された候補（自動補完）を確定</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>t</kbd></td><td class="d">fzf でファイルを選び、カーソル位置に挿入</td></tr>
+      <tr><td class="k"><kbd>Option</kbd>+<kbd>c</kbd></td><td class="d">fzf でディレクトリを選んで移動<small>左 Option が Alt として働く Ghostty でのみ有効</small></td></tr>
+      <tr><td class="k"><code>z 名前の一部</code></td><td class="d">よく行くディレクトリへ一発移動</td></tr>
+      <tr><td class="k"><code>zi</code></td><td class="d">移動先を fzf で選ぶ</td></tr>
+    </table></div>
+    <h3>エイリアス</h3>
+    <div class="table-box"><table>
+      <tr><td class="k"><code>ll</code> / <code>la</code> / <code>lt</code></td><td class="d">eza で一覧 / 隠しファイル込み / ツリー表示（git の状態付き）</td></tr>
+      <tr><td class="k"><code>lg</code></td><td class="d">lazygit を起動</td></tr>
+      <tr><td class="k"><code>cw 名前</code></td><td class="d">Claude Code を新しい worktree で起動（<a href="#claude">Claude Code</a> を参照）</td></tr>
+      <tr><td class="k"><code>gst</code> <code>gdi</code> <code>gco</code> …</td><td class="d">従来の git エイリアス（status / diff / checkout など）はそのまま</td></tr>
+      <tr><td class="k"><code>rm</code> <code>cp</code> <code>mv</code> <code>ln</code></td><td class="d">上書き・削除の前に確認する（<code>-i</code> 付き）。<code>mkdir</code> は <code>-p</code> 付き</td></tr>
+    </table></div>
+  </section>
+
+  <section id="tmux">
+    <h2>tmux <span class="tag">.tmux.conf / 3.7c</span></h2>
+    <div class="table-box"><table>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>t</kbd></td><td class="d">sesh でセッションを選ぶ・作る（既存のセッション＋zoxide の履歴）</td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>w</kbd></td><td class="d">全ウィンドウの一覧（プレビュー付き）</td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>c</kbd></td><td class="d">新しいウィンドウ<small>ssh 中のペインで押すと、同じホストに接続したウィンドウを開く</small></td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>Ctrl</kbd>+<kbd>j</kbd> / <kbd>Ctrl</kbd>+<kbd>l</kbd></td><td class="d">上下に分割 / 左右に分割</td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></td><td class="d">ペインを移動</td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>Ctrl</kbd>+<kbd>k</kbd></td><td class="d">ペインを閉じる</td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>r</kbd></td><td class="d">設定を再読み込み</td></tr>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>s</kbd></td><td class="d">アプリに <kbd>Ctrl</kbd>+<kbd>s</kbd> そのものを送る</td></tr>
+    </table></div>
+    <h3>タブの表示（Claude Code の状態）</h3>
+    <div class="table-box"><table>
+      <tr><td class="k">⏳</td><td class="d">Claude Code が処理中</td></tr>
+      <tr><td class="k">🔔 オレンジ</td><td class="d">許可や入力を待っている</td></tr>
+      <tr><td class="k">✅ 緑</td><td class="d">完了。そのタブを開くと表示が消える</td></tr>
+    </table></div>
+    <div class="caution"><b>補足</b>　tmux 本体を更新したあとは <code>tmux kill-server</code> で再起動が必要です。セッションは resurrect で復元され、Claude Code は <code>claude -c</code> で会話を再開できます。</div>
+  </section>
+
+  <section id="copy">
+    <h2>tmux のコピーモード</h2>
+    <p class="lead">コピーモードに入ると、入力ソースが自動で英数に切り替わります。日本語入力のままでも <kbd>y</kbd> などがすぐ効き、抜けると元の入力ソースに戻ります。</p>
+    <div class="table-box"><table>
+      <tr><td class="k"><kbd>prefix</kbd> <kbd>[</kbd> / ホイールで上へ</td><td class="d">コピーモードに入る</td></tr>
+      <tr><td class="k"><kbd>v</kbd></td><td class="d">選択を開始</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>v</kbd></td><td class="d">矩形選択に切り替え</td></tr>
+      <tr><td class="k"><kbd>y</kbd></td><td class="d">クリップボードにコピーして抜ける</td></tr>
+      <tr><td class="k"><kbd>Esc</kbd></td><td class="d">選択中なら選択を解除、何も選択していなければ抜ける</td></tr>
+      <tr><td class="k">ドラッグ</td><td class="d">マウスで選択（コピーはされない。<kbd>y</kbd> でコピー）</td></tr>
+      <tr><td class="k">選択中にクリック</td><td class="d">コピーモードを抜ける</td></tr>
+      <tr><td class="k"><kbd>/</kbd> <kbd>?</kbd> → <kbd>n</kbd> <kbd>N</kbd></td><td class="d">下方向 / 上方向に検索し、次 / 前の一致へ移動</td></tr>
+    </table></div>
+  </section>
+
+  <section id="nvim">
+    <h2>Neovim <span class="tag">nvim/init.lua / 0.12</span></h2>
+    <div class="table-box"><table>
+      <tr><td class="k"><kbd>;</kbd></td><td class="d">コマンド入力（<kbd>:</kbd> と入れ替えてある）</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>f</kbd></td><td class="d">今のファイルと同じディレクトリ以下でファイル検索（fzf-lua）</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>b</kbd></td><td class="d">開いているバッファの一覧</td></tr>
+      <tr><td class="k">ピッカー内 <kbd>Ctrl</kbd>+<kbd>j</kbd> / <kbd>Ctrl</kbd>+<kbd>l</kbd></td><td class="d">上下に分割して開く / 左右に分割して開く</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd>+<kbd>n</kbd> / <kbd>Ctrl</kbd>+<kbd>p</kbd></td><td class="d">次 / 前のバッファ</td></tr>
+      <tr><td class="k"><kbd>Esc</kbd> <kbd>Esc</kbd></td><td class="d">検索のハイライトを消す</td></tr>
+      <tr><td class="k"><kbd>Space</kbd> <kbd>n</kbd> / <kbd>Space</kbd> <kbd>m</kbd></td><td class="d">ウィンドウの幅を 10 狭める / 広げる</td></tr>
+      <tr><td class="k"><code>:lua vim.pack.update()</code></td><td class="d">プラグインを更新。差分を確認して <code>:write</code> で確定、<code>:quit</code> で取り消し</td></tr>
+      <tr><td class="k"><code>:restart</code></td><td class="d">Neovim を再起動（設定の変更を反映）</td></tr>
+    </table></div>
+  </section>
+
+  <section id="ghostty">
+    <h2>Ghostty <span class="tag">ghostty/config</span></h2>
+    <div class="table-box"><table>
+      <tr><td class="k"><kbd>Cmd</kbd>+<kbd>u</kbd></td><td class="d">背景の透過と非透過を切り替える</td></tr>
+      <tr><td class="k"><kbd>Cmd</kbd>+クリック</td><td class="d">URL を開く（tmux の外）</td></tr>
+      <tr><td class="k"><kbd>Cmd</kbd>+<kbd>Shift</kbd>+クリック</td><td class="d">URL を開く（tmux の中）。Claude Code などが出すリンク（OSC 8）も開ける</td></tr>
+      <tr><td class="k"><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>,</kbd></td><td class="d">設定を再読み込み</td></tr>
+      <tr><td class="k">左 <kbd>Option</kbd></td><td class="d">Alt キーとして働く（右 Option は従来どおり特殊文字の入力）</td></tr>
+    </table></div>
+    <div class="caution"><b>補足</b>　透過度（<code>background-opacity</code>）の変更は、<kbd>Cmd</kbd>+<kbd>q</kbd> で Ghostty を完全に終了して起動し直すまで反映されません。</div>
+  </section>
+
+  <section id="git">
+    <h2>Git <span class="tag">git/config / ~/.gitconfig</span></h2>
+    <div class="table-box"><table>
+      <tr><td class="k"><code>git diff</code> / <code>git log -p</code></td><td class="d">delta で色分け・行番号付きで表示。<kbd>n</kbd> / <kbd>N</kbd> で次 / 前のファイルへ</td></tr>
+      <tr><td class="k"><code>git push</code></td><td class="d">新しいブランチでも、そのまま push すればリモートに作られる（<code>-u</code> が不要）</td></tr>
+      <tr><td class="k"><code>git commit</code></td><td class="d">1Password で自動署名（Touch ID の承認が出る）。GitHub では「Verified」と表示される</td></tr>
+      <tr><td class="k"><code>git commit --no-verify</code></td><td class="d">dotfiles の gitleaks チェックを飛ばす（誤検知のときだけ使う）</td></tr>
+      <tr><td class="k"><code>lg</code></td><td class="d">lazygit でステージ・コミット・ブランチを操作</td></tr>
+    </table></div>
+    <h3>自動で効いている設定</h3>
+    <div class="table-box"><table>
+      <tr><td class="k">コンフリクトの表示</td><td class="d">元の内容も並べて表示する（<code>zdiff3</code>）</td></tr>
+      <tr><td class="k">同じコンフリクト</td><td class="d">一度解決したものは次から自動で解決する（<code>rerere</code>）</td></tr>
+      <tr><td class="k"><code>git branch</code></td><td class="d">最近コミットした順に並ぶ</td></tr>
+      <tr><td class="k"><code>git fetch</code></td><td class="d">リモートで消えたブランチも掃除する</td></tr>
+    </table></div>
+  </section>
+
+  <section id="claude">
+    <h2>Claude Code</h2>
+    <h3>ステータスライン</h3>
+    <div class="status-demo"><span class="b">dotfiles</span> <span class="g">main</span> <span class="m">[wt:fix-x]</span> · Opus · <span class="y">ctx 63%</span> · 5h 23%</div>
+    <div class="table-box" style="margin-top:10px"><table>
+      <tr><td class="k">左から</td><td class="d">ディレクトリ・ブランチ・worktree 名・モデル・コンテキストの使用率・5時間枠の使用率</td></tr>
+      <tr><td class="k">ctx の色</td><td class="d">緑 → 50% から黄 → 80% から赤。赤になったら <code>/compact</code> するか、新しいセッションに切り替える目安</td></tr>
+    </table></div>
+    <h3>並列作業</h3>
+    <div class="table-box"><table>
+      <tr><td class="k"><code>cw 名前</code></td><td class="d">tmux の新しいウィンドウで <code>claude --worktree 名前</code> を起動する（1ウィンドウ = 1 worktree = 1エージェント）<small>worktree は <code>.claude/worktrees/名前</code>、ブランチは <code>worktree-名前</code>。同じ名前で実行すると再開する</small></td></tr>
+      <tr><td class="k"><code>claude -c</code></td><td class="d">このディレクトリの直前の会話を再開する</td></tr>
+      <tr><td class="k"><code>claude --resume</code></td><td class="d">再開する会話を一覧から選ぶ</td></tr>
+    </table></div>
+  </section>
+
+  <section id="runtime">
+    <h2>言語環境</h2>
+    <div class="table-box"><table>
+      <tr><td class="k"><code>mise use node@22</code></td><td class="d">このプロジェクトの Node のバージョンを指定する（<code>mise.toml</code> に書かれる）</td></tr>
+      <tr><td class="k"><code>mise ls</code></td><td class="d">入っているバージョンの一覧</td></tr>
+      <tr><td class="k"><code>.node-version</code></td><td class="d">nodenv 時代のファイルもそのまま読まれる</td></tr>
+      <tr><td class="k"><code>uv run</code> / <code>uv add</code></td><td class="d">Python は uv で管理する（mise では扱わない）</td></tr>
+    </table></div>
+  </section>
+
+  <section id="maint">
+    <h2>メンテナンス</h2>
+    <div class="table-box"><table>
+      <tr><td class="k"><code>brew upgrade</code></td><td class="d">Homebrew で入れたツールを更新</td></tr>
+      <tr><td class="k"><code>mise upgrade</code></td><td class="d">Node / pnpm を更新</td></tr>
+      <tr><td class="k"><code>antidote update</code></td><td class="d">zsh のプラグインを更新</td></tr>
+      <tr><td class="k"><code>tldr --update</code></td><td class="d">tldr の使用例を更新</td></tr>
+      <tr><td class="k"><code>./install.sh</code></td><td class="d">シンボリックリンクを張り直す（何度実行しても同じ結果）<small><code>--brew</code> を付けると Brewfile のツールも入れる</small></td></tr>
+      <tr><td class="k"><code>time zsh -i -c exit</code></td><td class="d">zsh の起動時間を測る（目安は約 70ms）</td></tr>
+    </table></div>
+    <div class="caution"><b>注意</b>　このリポジトリの作業ツリーは、そのまま本番の設定として読まれています。ブランチを切り替えると tmux・zsh・Neovim の設定もすぐ変わるので、未マージの変更があるときは注意してください。</div>
+  </section>
+
+  <p class="empty-hit" id="empty">該当する項目がありません。</p>
+
+  <footer>設定ファイル: github.com/t-kot/dotfiles ・ 詳しくは docs/ 以下を参照</footer>
+</div>
+
+<script>
+  (function () {
+    var input = document.getElementById('filter');
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section'));
+    var empty = document.getElementById('empty');
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      var anyHit = false;
+      sections.forEach(function (sec) {
+        var units = sec.querySelectorAll('tr, .tool');
+        var secHit = 0;
+        units.forEach(function (u) {
+          var hit = !q || u.textContent.toLowerCase().indexOf(q) !== -1;
+          u.hidden = !hit;
+          if (hit) secHit++;
+        });
+        var headHit = q && sec.querySelector('h2').textContent.toLowerCase().indexOf(q) !== -1;
+        if (headHit) { units.forEach(function (u) { u.hidden = false; }); secHit = units.length; }
+        sec.querySelectorAll('.table-box, .tools').forEach(function (box) {
+          var visible = box.querySelectorAll('tr:not([hidden]), .tool:not([hidden])').length;
+          box.hidden = q && visible === 0;
+        });
+        sec.hidden = q && secHit === 0;
+        if (!sec.hidden) anyHit = true;
+      });
+      empty.style.display = anyHit ? 'none' : 'block';
+    });
+  })();
+</script>
+</body>
+</html>
