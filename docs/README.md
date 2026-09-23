@@ -27,3 +27,20 @@ git clone git@github.com:t-kot/dotfiles.git ~/Repository/dotfiles
 
 ## リポジトリ運用
 - プラグイン本体は追跡しない。`nvim/nvim-pack-lock.json` だけを管理する。
+
+## ターミナル（Ghostty）
+- 設定: `ghostty/config`（`~/.config/ghostty/config`）。フォント・透過は iTerm2 のプロファイルから移植
+- 左 Option を Alt として使う（fzf の `M-c` など）。右 Option は従来どおり特殊文字の入力
+- ssh 先には Ghostty の terminfo を自動で送る（`shell-integration-features = ssh-env,ssh-terminfo`）
+- 設定の再読み込み: `cmd+shift+,`
+
+## Claude Code
+- statusLine: `.claude-global/statusline.sh`（ディレクトリ・ブランチ・worktree・モデル・コンテキスト使用率・5時間の使用率）。コンテキスト使用率は 50% で黄、80% で赤
+- 並列作業: `cw <name>` で tmux の新しいウィンドウを開き、`claude --worktree <name>` を起動する（1ウィンドウ = 1 worktree = 1エージェント）
+  - worktree は `.claude/worktrees/<name>`、ブランチは `worktree-<name>`。同じ名前で実行すると再開する
+  - gitignore しているファイル（`.env` など）を worktree にコピーしたい場合は、リポジトリに `.worktreeinclude` を置く
+- 各ウィンドウの状態（⏳ 実行中 / 🔔 入力待ち / ✅ 完了）は tmux のステータスバーに表示される
+
+## シークレット対策
+- コミット時に gitleaks が差分をスキャンする（`.githooks/pre-commit`）。`install.sh` が `core.hooksPath` を設定する
+- 誤検知で止まったときは `git commit --no-verify`。恒常的に除外したい場合は `.gitleaksignore` に fingerprint を追加する

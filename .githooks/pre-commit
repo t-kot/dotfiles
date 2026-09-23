@@ -1,0 +1,8 @@
+#!/bin/sh
+# Block commits that add secrets. This repo is public.
+# Enabled per-repo by install.sh (core.hooksPath=.githooks). Bypass: git commit --no-verify
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "pre-commit: gitleaks not installed (brew install gitleaks); skipping secret scan" >&2
+  exit 0
+fi
+exec gitleaks git --pre-commit --staged --redact --no-banner

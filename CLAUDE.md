@@ -20,14 +20,17 @@ The link table lives in `install.sh`. When adding a new config file, add it ther
 - zsh: `.zshenv` → `.zprofile` (env/PATH) → `.zshrc` (interactive). No framework: plugins via antidote (`zsh/plugins.txt`), prompt via starship (`starship.toml`).
 - Neovim: `nvim/init.lua` only, plugins via built-in `vim.pack`; `nvim/nvim-pack-lock.json` is committed. Requires Neovim 0.12+.
 - git: `git/config` → `~/.config/git/config`. Machine-local identity/credentials stay in `~/.gitconfig` (read later, so it wins).
+- Terminal: Ghostty (`ghostty/config`); tmux inside it.
 - Runtimes: mise (`mise/config.toml`) for node/pnpm; Python is managed by uv.
-- Claude Code: `.claude-global/settings.json` and `skills/` → `~/.claude/`. Both are gitignored (they hold private repo names / org paths); `settings.example.json` is the tracked, sanitized template — mirror shareable changes (hooks, permissions) into it by hand. Hooks set the tmux window option `@cc_state`, which `.tmux.conf` renders in the status bar.
+- Claude Code: `.claude-global/settings.json` and `skills/` → `~/.claude/`. Both are gitignored (they hold private repo names / org paths); `settings.example.json` is the tracked, sanitized template — mirror shareable changes (hooks, permissions) into it by hand. Hooks set the tmux window option `@cc_state`, which `.tmux.conf` renders in the status bar. `statusline.sh` (tracked) renders dir/branch/worktree/model/context%. `cw <name>` (in `.zshrc.alias`) opens a tmux window running `claude --worktree <name>`.
+- Commits run gitleaks via `.githooks/pre-commit` (`core.hooksPath`, set by `install.sh`).
 
 ## Reload Commands
 
 - **zsh**: `exec zsh`
 - **tmux**: `prefix r` (prefix is `C-s`); after `brew upgrade tmux` the server must be restarted
 - **Neovim plugins**: `:lua vim.pack.update()` then `:write` to confirm
+- **Ghostty**: `cmd+shift+,`
 - **Startup time check**: `time zsh -i -c exit` (~70ms baseline)
 
 ## Key Conventions
