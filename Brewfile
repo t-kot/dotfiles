@@ -2,6 +2,7 @@
 # Check what's missing: brew bundle check --file=~/Repository/dotfiles/Brewfile
 
 # --- Shell / terminal ---
+cask "ghostty"
 brew "tmux"
 brew "reattach-to-user-namespace"   # lets tmux panes reach the macOS Keychain
 brew "terminal-notifier"            # Claude Code notification hook
@@ -31,6 +32,7 @@ brew "yq"
 
 # --- Dev / runtimes ---
 brew "gh"
+brew "gitleaks"                     # pre-commit secret scan (.githooks)
 brew "mise"                         # node / pnpm (Python is uv)
 cask "1password-cli"
 cask "docker-desktop"

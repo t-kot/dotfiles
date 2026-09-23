@@ -45,3 +45,14 @@ alias df='df -kh'
 alias du='du -kh'
 alias d='dirs -v'
 alias o='open'
+
+# Claude Code in parallel: one tmux window = one git worktree = one agent.
+#   cw <name>  -> new window "<name>" running `claude --worktree <name>`
+#                 (worktree at .claude/worktrees/<name>, branch worktree-<name>;
+#                  re-running with the same name re-enters it)
+cw() {
+  [[ $1 =~ '^[A-Za-z0-9._-]+$' ]] || { echo "usage: cw <name>  (letters, digits, . _ -)" >&2; return 1; }
+  local root
+  root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "cw: not in a git repo" >&2; return 1; }
+  tmux new-window -n "$1" -c "$root" "claude --worktree $1; exec zsh"
+}

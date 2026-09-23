@@ -18,8 +18,10 @@ links=(
   git/ignore                     ~/.config/git/ignore
   mise/config.toml               ~/.config/mise/config.toml
   starship.toml                  ~/.config/starship.toml
+  ghostty/config                 ~/.config/ghostty/config
   .claude-global/settings.json   ~/.claude/settings.json
   .claude-global/skills          ~/.claude/skills
+  .claude-global/statusline.sh   ~/.claude/statusline.sh
 )
 
 # Claude Code settings/skills are untracked (machine-local); seed them on a
@@ -46,6 +48,9 @@ done
 if [[ ${1:-} == --brew ]]; then
   brew bundle --file=$DOTFILES/Brewfile
 fi
+
+# Secret scan on commit (this repo is public)
+git -C $DOTFILES config core.hooksPath .githooks
 
 # tmux plugin manager
 [[ -d ~/.tmux/plugins/tpm ]] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

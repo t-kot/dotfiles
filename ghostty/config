@@ -1,0 +1,18 @@
+# Ghostty config, symlinked to ~/.config/ghostty/config.
+# Reload: cmd+shift+,   Check: ghostty +validate-config   List keys: ghostty +show-config --default --docs
+
+# Carried over from the iTerm2 profile
+font-family = MesloLGS NF
+font-size = 16
+background-opacity = 0.5
+background-blur = true
+
+# Left Option acts as Alt/Meta (fzf M-c, zsh word motions); right Option still
+# types special characters.
+macos-option-as-alt = left
+
+# Copy ghostty's terminfo to ssh hosts / fall back to xterm-256color there,
+# so remote shells don't break on TERM=xterm-ghostty.
+shell-integration-features = ssh-env,ssh-terminfo
+
+window-save-state = always
