@@ -1,0 +1,44 @@
+# Shared git config, symlinked to ~/.config/git/config.
+# Machine-local settings (user, credential helpers) stay in ~/.gitconfig,
+# which git reads after this file and therefore wins on conflicts.
+
+[core]
+	quotepath = false
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+[init]
+	defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[merge]
+	conflictstyle = zdiff3
+[push]
+	autoSetupRemote = true
+	followTags = true
+[fetch]
+	prune = true
+	pruneTags = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[rerere]
+	enabled = true
+	autoupdate = true
+[commit]
+	verbose = true
+[help]
+	autocorrect = prompt

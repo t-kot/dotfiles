@@ -1,0 +1,111 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch",
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git blame *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git restore *)",
+      "Bash(git stash *)",
+      "Bash(npm *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(bun *)",
+      "Bash(make *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Bash(chmod 777 *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)"
+    ],
+    "defaultMode": "auto",
+    "disableBypassPermissionsMode": "disable",
+    "additionalDirectories": [
+      "/path/to/extra/dir"
+    ]
+  },
+  "skillOverrides": {
+    "inbox-sweep": "off",
+    "loose-ends": "off",
+    "share-minutes": "off",
+    "meeting-notes": "off"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"$TMUX_PANE\" ]; then tmux set-option -w -t \"$TMUX_PANE\" @cc_state '⏳' 2>/dev/null; fi; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"$TMUX_PANE\" ]; then tmux set-option -w -t \"$TMUX_PANE\" @cc_state '✅' 2>/dev/null; fi; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "MSG=$(cat | jq -r '.message // \"応答を待っています\"'); printf '\\a'; terminal-notifier -title 'Claude Code' -message \"$MSG\" -sound Glass; afplay /System/Library/Sounds/Glass.aiff &",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "if [ -n \"$TMUX_PANE\" ]; then tmux set-option -w -t \"$TMUX_PANE\" @cc_state '🔔' 2>/dev/null; fi; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "vercel@claude-plugins-official": false
+  },
+  "sandbox": {
+    "enabled": true,
+    "allowUnsandboxedCommands": true
+  },
+  "effortLevel": "medium",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "medium"
+    }
+  },
+  "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "model": "opus[1m]"
+}

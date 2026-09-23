@@ -1,5 +1,5 @@
 ### Ignore plugin caches and local state
-nvim/dein/
+.nvimlog
 /.DS_Store
 *.swp
 *.swo
@@ -7,3 +7,8 @@ nvim/dein/
 ### Local-only artifacts (not tracked)
 *.itermexport
 *.pdf
+
+### Claude Code: machine-local (may hold private repo names / org paths)
+# Template: .claude-global/settings.example.json (install.sh copies it on first run)
+.claude-global/settings.json
+.claude-global/skills/

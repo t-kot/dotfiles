@@ -1,36 +1,29 @@
 # zsh
 
-oh-my-zsh / Prezto を使いつつ、起動時の処理を最小化しパフォーマンス対策を入れています。
+フレームワークは使わず、素の zsh ＋ antidote（プラグイン）＋ starship（プロンプト）の構成。
 
-## ポイント
-- 早期 PATH 設定: 非ログインシェルでも Homebrew の `bin` を先頭に追加（`~/.zshrc.ohmyzsh-extra`）。
-- Git プロンプト: 安定時は gitstatus を使用。Obsidian では自動的に無効化してエラー回避。
-- 高速補完: `ZSH_DISABLE_COMPFIX=true`。oh-my-zsh の compinit キャッシュを利用。
-- VCS 負荷軽減: `DISABLE_UNTRACKED_FILES_DIRTY=true`（巨大リポで有効）。
-- フロー制御無効化: `.zshrc.alias` の `stty -ixon` で tmux の `C-s` と干渉しないように。
-- バージョン管理: `rbenv` / `nodenv` / `pyenv` は遅延ロード。`nvm` は無効化方針。
+## ファイル
+- `.zshenv`: 非ログインかつ非対話のシェル（スクリプトや IDE）でも `.zprofile` を読み込むためだけのファイル
+- `.zprofile`: 環境変数と PATH（Homebrew、`~/.local/bin`、pnpm、mise の shims）
+- `.zshrc`: 対話シェル用（setopt、補完、プラグイン、各ツールの初期化）
+- `.zshrc.alias`: エイリアスと `stty -ixon`（tmux のプレフィックス `C-s` を使えるようにする）
+- `zsh/plugins.txt`: antidote のプラグイン一覧。変更すると次の起動時に `~/.cache/zsh/plugins.zsh` が再生成される
+- `starship.toml`: プロンプト（`user@host ~/R/dir branch ❯` の形）
 
-## 関連ファイル
-- `.zshrc`: Prezto/p10k を読み込み、各言語ツールを遅延ロード。自動 tmux 起動は停止。
-- `.zshrc.alias`: エイリアス群と `stty -ixon`。
-- `.zshrc.ohmyzsh-extra`: パフォーマンス用の環境変数と PATH。Obsidian 専用の gitstatus フォールバックもここに記載。
+## プラグイン
+- ez-compinit（compinit をキャッシュ付きで実行）、zsh-completions
+- zsh-autosuggestions（履歴からの候補を薄く表示。`→` で確定）
+- fast-syntax-highlighting
+- zsh-history-substring-search（`↑` `↓` `^P` `^N` で、入力中の文字列を含む履歴を検索）
 
-## 遅延ロード
-- `rbenv / nodenv / pyenv` は PATH（bin + shims）のみ通し、初回呼び出し時に `init` を実行。
-- ログイン時間を短縮しつつ、使い勝手はそのまま維持します。
-
-## Obsidian ターミナル対策
-- gitstatus のキャッシュを `~/.cache/gitstatus` に固定。
-- `TERM_PROGRAM=obsidian` の場合は `POWERLEVEL9K_DISABLE_GITSTATUS=1` を付与して起動エラーを回避。
-- Obsidian でも VCS を使いたい場合は、アーキ不一致（arm64/x86_64）を解消するか p10k を再インストール。
+## ツール連携
+- `C-r`: atuin の履歴検索
+- `C-t` / `M-c`: fzf でファイル挿入 / ディレクトリ移動（`fd` を使用）
+- `z <dir>` / `zi`: zoxide
+- mise: Node と pnpm を管理（`mise/config.toml`）。Python は uv で管理する
+- `ll` / `la` / `lt`: eza、`lg`: lazygit
+- 安全用エイリアス: `cp` / `mv` / `rm` / `ln` は `-i` 付き、`mkdir` は `-p` 付き
 
 ## 起動時間の計測
-- 目安: `time zsh -i -c exit`
-- zprof: `.zshrc` 先頭に `zmodload zsh/zprof`、末尾に `zprof` を置いてホットスポットを可視化。
-- xtrace（タイムスタンプ付き1回測定）: `PS4=$'+%D{%s.%3.} %N:%i> ' zsh -xvic exit 2> ~/zsh.trace`
-
-## 主なエイリアス
-- Git: `gsh/gst/gci/gdi/gdc/gbr/gad/gco/glog/grs/ggr/gmerge`
-- tmux: `tlist/tkill/tkill!`
-- Docker: `dc/dcu/dcr` → `docker compose`
-- Editor: `vim` → `nvim`
+- `time zsh -i -c exit`（目安 70ms）
+- 詳しく見る場合: `.zshrc` の先頭に `zmodload zsh/zprof`、末尾に `zprof` を置く

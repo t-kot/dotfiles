@@ -1,0 +1,34 @@
+# Mirrors the old Prezto sorin prompt: user@host ~/R/d/dir main ❯
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+format = '$username$hostname $directory$git_branch$git_status$cmd_duration$character'
+
+[username]
+show_always = true
+format = '[$user]($style)'
+style_user = 'red'
+
+[hostname]
+ssh_only = false
+format = '@[$hostname]($style)'
+style = 'yellow'
+
+[directory]
+style = 'blue'
+fish_style_pwd_dir_length = 1
+truncation_length = 1
+
+[git_branch]
+format = '[$branch]($style) '
+style = 'green'
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+
+[cmd_duration]
+min_time = 3000
+format = '[took $duration]($style) '
+
+[character]
+success_symbol = '[❯](green)'
+error_symbol = '[❯](red)'
