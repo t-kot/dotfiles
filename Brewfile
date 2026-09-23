@@ -9,6 +9,7 @@ brew "terminal-notifier"            # Claude Code notification hook
 brew "sesh"                         # tmux session picker (prefix t)
 brew "atuin"                        # shell history search (C-r)
 brew "fzf"
+brew "laishulu/homebrew/macism"      # tmux copy mode switches IME to ASCII
 brew "zoxide"                       # `z <dir>` jump
 brew "antidote"                     # zsh plugin manager
 brew "starship"                     # prompt

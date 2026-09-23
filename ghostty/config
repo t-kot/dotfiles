@@ -1,11 +1,20 @@
 # Ghostty config, symlinked to ~/.config/ghostty/config.
 # Reload: cmd+shift+,   Check: ghostty +validate-config   List keys: ghostty +show-config --default --docs
 
-# Carried over from the iTerm2 profile
+# Font carried over from the iTerm2 profile
 font-family = MesloLGS NF
 font-size = 16
-background-opacity = 0.5
-background-blur = true
+
+# Transparency. 0.5 (the iTerm2 value) let bright windows behind wash out the
+# text, so keep it denser; no blur. Opacity changes need a full Ghostty restart.
+background-opacity = 0.85
+background-blur = false
+# cmd+u toggles transparent <-> opaque, like iTerm2
+keybind = super+u=toggle_background_opacity
+
+# Readability of dim text (Claude Code hints, prompt/statusline, comments)
+faint-opacity = 0.8
+minimum-contrast = 3
 
 # Left Option acts as Alt/Meta (fzf M-c, zsh word motions); right Option still
 # types special characters.

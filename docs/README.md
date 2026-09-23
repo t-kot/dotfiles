@@ -29,7 +29,9 @@ git clone git@github.com:t-kot/dotfiles.git ~/Repository/dotfiles
 - プラグイン本体は追跡しない。`nvim/nvim-pack-lock.json` だけを管理する。
 
 ## ターミナル（Ghostty）
-- 設定: `ghostty/config`（`~/.config/ghostty/config`）。フォント・透過は iTerm2 のプロファイルから移植
+- 設定: `ghostty/config`（`~/.config/ghostty/config`）。フォントは iTerm2 のプロファイルから移植
+- 背景の不透明度は 0.85（ブラーなし）。`Cmd+U` で透過と非透過を切り替える。不透明度の変更は Ghostty を完全に再起動するまで反映されない
+- 薄い文字を読みやすくする: `faint-opacity = 0.8`、`minimum-contrast = 3`
 - 左 Option を Alt として使う（fzf の `M-c` など）。右 Option は従来どおり特殊文字の入力
 - ssh 先には Ghostty の terminfo を自動で送る（`shell-integration-features = ssh-env,ssh-terminfo`）
 - 設定の再読み込み: `cmd+shift+,`
