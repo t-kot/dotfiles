@@ -21,7 +21,7 @@ The link table lives in `install.sh`. When adding a new config file, add it ther
 - Neovim: `nvim/init.lua` only, plugins via built-in `vim.pack`; `nvim/nvim-pack-lock.json` is committed. Requires Neovim 0.12+.
 - git: `git/config` → `~/.config/git/config`. Machine-local identity/credentials stay in `~/.gitconfig` (read later, so it wins).
 - Runtimes: mise (`mise/config.toml`) for node/pnpm; Python is managed by uv.
-- Claude Code: `.claude-global/` → `~/.claude/`. Hooks set the tmux window option `@cc_state`, which `.tmux.conf` renders in the status bar.
+- Claude Code: `.claude-global/settings.json` and `skills/` → `~/.claude/`. Both are gitignored (they hold private repo names / org paths); `settings.example.json` is the tracked, sanitized template — mirror shareable changes (hooks, permissions) into it by hand. Hooks set the tmux window option `@cc_state`, which `.tmux.conf` renders in the status bar.
 
 ## Reload Commands
 

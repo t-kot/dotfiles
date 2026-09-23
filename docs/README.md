@@ -18,6 +18,7 @@ git clone git@github.com:t-kot/dotfiles.git ~/Repository/dotfiles
 ~/Repository/dotfiles/install.sh --brew   # シンボリックリンクと brew bundle
 ```
 - `install.sh` は何度実行しても同じ結果になる。既存ファイルがあれば `~/.dotfiles-backup/<日時>/` に退避してからリンクする
+- Claude Code の `settings.json` と `skills/` は Git 管理外（非公開のリポジトリ名などを含むため）。初回の `install.sh` 実行時に `settings.example.json` から作られる。hooks など共有してよい変更は example 側にも手で反映する
 - ユーザー名や認証情報など、マシン固有の git 設定は `~/.gitconfig` に置く（`git/config` より優先される）
 
 ## メンテナンス

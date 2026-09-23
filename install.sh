@@ -22,6 +22,12 @@ links=(
   .claude-global/skills          ~/.claude/skills
 )
 
+# Claude Code settings/skills are untracked (machine-local); seed them on a
+# fresh clone so the links below have something to point at.
+[[ -e $DOTFILES/.claude-global/settings.json ]] ||
+  cp $DOTFILES/.claude-global/settings.example.json $DOTFILES/.claude-global/settings.json
+mkdir -p $DOTFILES/.claude-global/skills
+
 for src dst in $links; do
   src=$DOTFILES/$src
   if [[ -L $dst && ${dst:A} == ${src:A} ]]; then
