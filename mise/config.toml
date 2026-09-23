@@ -1,0 +1,10 @@
+# Global mise config, symlinked to ~/.config/mise/config.toml.
+# Python is managed by uv, not mise.
+
+[settings]
+# Honor .node-version / .ruby-version files left over from nodenv/rbenv.
+idiomatic_version_file_enable_tools = ["node", "ruby"]
+
+[tools]
+node = "24"
+pnpm = "latest"
