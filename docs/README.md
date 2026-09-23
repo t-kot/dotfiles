@@ -5,6 +5,7 @@
 - zsh: docs/zsh.md を参照
 - tmux: docs/tmux.md を参照
 - Vim/Neovim: docs/vim.md を参照
+- 早見表（キー操作・コマンド一覧）: docs/cheatsheet.html をブラウザで開く（`open docs/cheatsheet.html`）
 
 ## 概要
 - 対応 OS: macOS
