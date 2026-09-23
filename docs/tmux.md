@@ -6,7 +6,11 @@ Truecolor と macOS クリップボード連携に対応した、軽量でモダ
 - 端末設定: `default-terminal=tmux-256color`。`terminal-features` で RGB を有効化。
 - プレフィックス: `C-s`（Ctrl-s）。zsh 側で `stty -ixon` を有効化してフロー制御との衝突を回避。
 - マウス: 有効（`set -g mouse on`）。
-- コピー: vi-copy の `y` で `pbcopy` に連携（`set-clipboard on`）。
+- コピーモード（vi キー）:
+  - `v` で選択開始、`C-v` で矩形選択、`y` でクリップボードにコピー（`pbcopy`）
+  - `Esc`: 選択中なら解除し、何も選択していなければコピーモードを抜ける
+  - マウス: ドラッグで選択（コピーはしない）。選択中にクリックするとコピーモードを抜ける
+  - 選択の色は青（`mode-style` / `copy-mode-selection-style`）
 - 再読み込み: `r` キーで `~/.tmux.conf` を再読み込み。
 
 ## ペイン/ウィンドウ操作
@@ -19,5 +23,5 @@ Truecolor と macOS クリップボード連携に対応した、軽量でモダ
 
 ## セッション / tmux 3.7
 - `prefix t`: sesh ピッカー（既存セッション + zoxide の履歴ディレクトリから選択・新規作成）。
-- `pane-scrollbars modal`: copy-mode 中だけスクロールバーを表示（tmux 3.7 以上）。
+- スクロールバーは使わない（`pane-scrollbars off`）。`modal` にすると、コピーモードに入ったときにペインが1列狭くなって折り返しがずれるため。
 - `brew upgrade tmux` 後は、tmux サーバを再起動するまで旧バージョンのまま動く（`tmux kill-server` → 再起動。tmux-resurrect / continuum でセッションを復元）。
