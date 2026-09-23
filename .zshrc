@@ -1,115 +1,59 @@
-# Fast, framework-aware zsh config (interactive shells only)
-
-# Return early for non-interactive shells
+# Interactive zsh config. Environment/PATH live in .zprofile.
 [[ $- != *i* ]] && return
 
-# Auto-attach tmux on terminal launch (skip inside tmux, SSH, or embedded terminals)
-if command -v tmux >/dev/null 2>&1 \
-  && [[ -z "$TMUX" ]] \
-  && [[ -z "$SSH_CONNECTION" ]] \
-  && [[ -z "$VSCODE_PID" ]] \
-  && [[ "$TERM_PROGRAM" != "vscode" ]] \
-  && [[ -z "$INSIDE_EMACS" ]]; then
-  tmux attach-session 2>/dev/null || tmux new-session
-fi
+# Repo root, resolved through the ~/.zshrc symlink
+DOTFILES=${${(%):-%x}:A:h}
 
-# Load performance extras early (PATH/bootstrap, Obsidian workarounds)
-source "$HOME/dotfiles/.zshrc.ohmyzsh-extra" 2>/dev/null || true
-
-# Prefer oh-my-zsh if installed; else Prezto; else minimal fallback
-_loaded_framework=none
-if [[ -z "$ZSH" ]]; then
-  ZSH="$HOME/.oh-my-zsh"
-fi
-if [[ -d "$ZSH" && -f "$ZSH/oh-my-zsh.sh" ]]; then
-  source "$ZSH/oh-my-zsh.sh"
-  _loaded_framework=ohmyzsh
-elif [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  _loaded_framework=prezto
-else
-  # Minimal fallback
-  # History (fast + useful)
-  export HISTFILE=${HISTFILE:-$HOME/.zsh_history}
-  export HISTSIZE=50000
-  export SAVEHIST=50000
-  setopt hist_ignore_all_dups share_history inc_append_history
-
-  # UI: simple, fast prompt
-  setopt prompt_subst
-  PROMPT='%F{green}%n@%m%f %F{blue}%1~%f %# '
-
-  # Sensible defaults
-  setopt auto_cd correct noclobber interactive_comments
-  setopt no_beep
-
-  # Completion (cached, safe, and quick)
-  zmodload -i zsh/complist
-  autoload -Uz compinit
-  _zcompdump_cache_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh
-  mkdir -p $_zcompdump_cache_dir
-  _zcompdump_file=$_zcompdump_cache_dir/zcompdump
-  if [[ -f $_zcompdump_file(.Nmh+24) ]]; then
-    compinit -C -d $_zcompdump_file
-  else
-    compinit -d $_zcompdump_file
-  fi
-  zstyle ':completion:*' menu select
-  zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*'
-  zstyle ':completion:*' squeeze-slashes true
-fi
-
-# Powerlevel10k (optional). Keep near top for instant prompt to work.
-# (sourced once via the block below, near end of file)
-
-# Keybindings
+# --- Options ----------------------------------------------------------------
+HISTFILE=~/.zsh_history HISTSIZE=50000 SAVEHIST=50000
+setopt extended_history share_history hist_ignore_all_dups hist_ignore_space \
+  hist_find_no_dups hist_save_no_dups hist_expire_dups_first hist_verify
+setopt auto_cd auto_pushd pushd_ignore_dups pushd_silent pushd_to_home cdable_vars
+setopt extended_glob interactive_comments rc_quotes long_list_jobs noclobber \
+  correct complete_in_word always_to_end no_flow_control no_beep
 bindkey -e
 
-# PATH helpers (keep minimal; extend as needed)
-typeset -Ua path
-path=($HOME/.local/bin $HOME/bin $path)
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*' squeeze-slashes true
 
-# Aliases
-[[ -f $HOME/.zshrc.alias ]] && source $HOME/.zshrc.alias
+# --- Plugins (antidote, static bundle rebuilt when plugins.txt changes) -----
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+_plugins_txt=$DOTFILES/zsh/plugins.txt
+_plugins_zsh=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/plugins.zsh
+if [[ ! $_plugins_zsh -nt $_plugins_txt ]]; then
+  mkdir -p ${_plugins_zsh:h}
+  antidote bundle <$_plugins_txt >|$_plugins_zsh
+fi
+source $_plugins_zsh
+unset _plugins_txt _plugins_zsh
 
-# Version managers: lazy loaders (work regardless of framework)
-export RBENV_ROOT="${RBENV_ROOT:-$HOME/.rbenv}"
-export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
-if command -v rbenv >/dev/null 2>&1; then
-  rbenv() { unset -f rbenv; eval "$(command rbenv init - zsh)"; rbenv "$@"; }
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
+# --- Tools ------------------------------------------------------------------
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
+
+# fzf: C-t (files), M-c (cd); C-r is taken over by atuin below
+if (( $+commands[fzf] )); then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
+  export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+  export FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
+  source <(fzf --zsh)
 fi
 
-export NODENV_ROOT="${NODENV_ROOT:-$HOME/.nodenv}"
-export PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
-if command -v nodenv >/dev/null 2>&1; then
-  nodenv() { unset -f nodenv; eval "$(command nodenv init -)"; nodenv "$@"; }
-fi
+# zoxide: `z <partial dir>` to jump, `zi` for interactive pick
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
-export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
-export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-if command -v pyenv >/dev/null 2>&1; then
-  pyenv() { unset -f pyenv; eval "$(command pyenv init -)"; pyenv "$@"; }
-fi
+# atuin: C-r full-text history search. Up arrow stays with
+# history-substring-search.
+(( $+commands[atuin] )) && eval "$(atuin init zsh --disable-up-arrow)"
 
-# Optional: lazy-load fzf keybindings if available (no error if missing)
-if [[ -r /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
-  source /usr/local/opt/fzf/shell/key-bindings.zsh
-elif [[ -r /opt/homebrew/opt/fzf/shell/key-bindings.zsh ]]; then
-  source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-fi
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+source $DOTFILES/.zshrc.alias
 
 # Claude Code
 export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
-
-[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end

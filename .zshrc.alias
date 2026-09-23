@@ -25,3 +25,23 @@ alias vim='nvim'
 alias dc='docker compose'
 alias dcu='docker compose up'
 alias dcr='docker compose run'
+
+# Modern CLI (new names; ls/cat themselves are left untouched)
+if (( $+commands[eza] )); then
+  alias ll='eza -l --git --group-directories-first'
+  alias la='eza -la --git --group-directories-first'
+  alias lt='eza --tree --level=2 --git-ignore'
+fi
+alias lg='lazygit'
+
+# Safety / convenience defaults (formerly from Prezto's utility module)
+alias cp='nocorrect cp -i'
+alias mv='nocorrect mv -i'
+alias rm='nocorrect rm -i'
+alias ln='nocorrect ln -i'
+alias mkdir='nocorrect mkdir -p'
+alias ls='ls -G'
+alias df='df -kh'
+alias du='du -kh'
+alias d='dirs -v'
+alias o='open'
