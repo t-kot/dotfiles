@@ -16,3 +16,8 @@ Truecolor と macOS クリップボード連携に対応した、軽量でモダ
 
 ## Truecolor
 - 近代的な端末でより良い発色にするため、`set -as terminal-features 'tmux-256color:RGB'` を設定。
+
+## セッション / tmux 3.7
+- `prefix t`: sesh ピッカー（既存セッション + zoxide の履歴ディレクトリから選択・新規作成）。
+- `pane-scrollbars modal`: copy-mode 中だけスクロールバーを表示（tmux 3.7 以上）。
+- `brew upgrade tmux` 後は、tmux サーバを再起動するまで旧バージョンのまま動く（`tmux kill-server` → 再起動。tmux-resurrect / continuum でセッションを復元）。
