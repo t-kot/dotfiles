@@ -33,6 +33,12 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
+# Turn mouse/focus reporting back off at every prompt. A program that dies
+# without cleaning up (e.g. Claude Code or vim over a dropped ssh) leaves it on,
+# and every mouse move then types junk like `35;76;1M` into the shell.
+_reset_terminal_modes() { print -n '\e[?1000l\e[?1002l\e[?1003l\e[?1006l\e[?1004l' }
+precmd_functions+=(_reset_terminal_modes)
+
 # --- Tools ------------------------------------------------------------------
 (( $+commands[mise] )) && eval "$(mise activate zsh)"
 
